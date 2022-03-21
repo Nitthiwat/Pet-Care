@@ -21,7 +21,6 @@
 </head>
 
 <body>
-    <h1>nune!!!!!!!!!!!!!!!!!!!!!!!!1</h1>
     <img src="./img/HeadShop.jpg" class="img-fluid w-100" alt="..." style="height: 60vh;">
 
     <div class="container">
