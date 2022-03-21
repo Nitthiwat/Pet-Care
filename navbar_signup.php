@@ -34,9 +34,7 @@
                   <div class="position-relative d-inline-flex align-items-center text-white top-shape px-5" style="background-color:#502064; color: white;">
                       
                       <ul class="nav  px-6">
-                        <li class="nav-item">
-                          <a class="nav-link text-light" href="./signup.php" data-bs-toggle="modal" >Sign up</a>
-                        </li>
+                       
                         <li class="nav-item">
                           <a class="nav-link text-light" href="./signin.php"  data-bs-toggle="modal" >Login</a>
                         </li>
@@ -52,19 +50,7 @@
             <h1 class="m-0 text-secondary"><i class="#"></i>Pet Care</h1>
         </a>
       </nav>
-      <ul class="nav nav-tabs bd-gray-600 px-4">
-        <li class="nav-item ">
-          <a class="nav-link text-light" href="index.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#">About me</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#">Product</a>
-        </li>
-      </ul>
      
-    
 </body>
   
 

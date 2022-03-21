@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,16 +25,15 @@
 </head>
 
 <body>
-
+  
   <?php include('navbar.php'); ?>
   <?php include('imgslide.php'); ?>
-  <?php include('login.php'); ?>
-  <?php include('signup.php'); ?>
   <?php include('content.php'); ?>
   <?php include('knowledge.php'); ?>
   <?php include('about_me.php'); ?>
   <?php include('footer.php'); ?>
   
+
 </body>
 
 </html>
