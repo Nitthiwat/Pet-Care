@@ -22,9 +22,7 @@
 
 <body>
     <img src="./img/HeadShop.jpg" class="img-fluid w-100" alt="..." style="height: 60vh;">
-    <h1>Pond!!!!!!!!!!!!!!!!!!!!</h1>
-    <H2>Pond!!!!!!!!!!!!!!!!!!!!</H2>
-    <h3>Pond!!!!!!!!!!!!!</h3>
+
     <div class="container">
         <nav id="navbar-shop" class="navbar navbar-light bg-light px-5 mb-3" style="height: 4rem;">
             <span class="navbar-brand" href="#">หมวดหมู่สินค้า</span>
@@ -140,7 +138,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>+
     <script src="js/bootstrap.min.js"></script>
 </body>
 
