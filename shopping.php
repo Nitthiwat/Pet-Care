@@ -22,9 +22,7 @@
 
 <body>
     <img src="./img/HeadShop.jpg" class="img-fluid w-100" alt="..." style="height: 60vh;">
-    <h1>Cream!!!!!!!!!!!!!!!!!!</h1>
-    <h2>Nune!!!!!!!!!!!!!!!!!!!!!</h2>
-    <h3>Pang!!!!!!!!!!!!!!!!1</h3>
+    <h1>Pond!!!!!!!!!!!!!!!!!!!!</h1>
     <div class="container">
         <nav id="navbar-shop" class="navbar navbar-light bg-light px-5 mb-3" style="height: 4rem;">
             <span class="navbar-brand" href="#">หมวดหมู่สินค้า</span>
