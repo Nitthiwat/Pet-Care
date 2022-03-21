@@ -22,7 +22,7 @@
 
 <body>
     <img src="./img/HeadShop.jpg" class="img-fluid w-100" alt="..." style="height: 60vh;">
-
+    <h1>Cream!!!!!!!!!!!!!!!!!!</h1>
     <div class="container">
         <nav id="navbar-shop" class="navbar navbar-light bg-light px-5 mb-3" style="height: 4rem;">
             <span class="navbar-brand" href="#">หมวดหมู่สินค้า</span>
@@ -49,18 +49,18 @@
                     include('conn.php');
                     $query = mysqli_query($conn, "select * from product where PetType_id ='PT001'");
                     while ($row = mysqli_fetch_array($query)) {
-                        if($row['Product_Qty']>0){
+                        if ($row['Product_Qty'] > 0) {
                     ?>
-                        <div class="col" style="height:auto;">
-                            <div class="card h-100">
-                                <a href="./buy.php?Product_id=<?php echo $row['Product_id']; ?>" class="card-img-top text-center"><img src="<?php echo $row['Product_img']; ?>" alt="..." style="width: 70%;"></a>
-                                <div class="card-body">
-                                    <h5 class="card-title" style="overflow:hidden;text-overflow: ellipsis;height:3rem"><?php echo $row['Product_name']; ?></h5>
-                                    <div class="card-text fs-6 opacity-75 cut-text-multi"><?php echo $row['Product_detail']; ?></div>
-                                    <div class="card-text text-end">฿<?php echo $row['Product_price']; ?></div>
+                            <div class="col" style="height:auto;">
+                                <div class="card h-100">
+                                    <a href="./buy.php?Product_id=<?php echo $row['Product_id']; ?>" class="card-img-top text-center"><img src="<?php echo $row['Product_img']; ?>" alt="..." style="width: 70%;"></a>
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="overflow:hidden;text-overflow: ellipsis;height:3rem"><?php echo $row['Product_name']; ?></h5>
+                                        <div class="card-text fs-6 opacity-75 cut-text-multi"><?php echo $row['Product_detail']; ?></div>
+                                        <div class="card-text text-end">฿<?php echo $row['Product_price']; ?></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     <?php
                         }
                     }
