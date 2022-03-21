@@ -21,7 +21,8 @@
             <span class="my-5" style="font-size:25px; color:blue">
                 <center><strong>เพิ่มข้อมูลสินค้า</strong></center>
             </span>
-            <a href="add.php">Add product</a>
+            <span class="pull-left"><a href="#addnew" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New</a></span>
+            <!-- <a href="add.php">Add product</a> -->
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <th>รหัสสินค้า</th>
@@ -32,6 +33,7 @@
                     <th>รูปภาพของสินค้า</th>
                     <th>ชนิดสินค้า</th>
                     <th>ชนิดสัตว์</th>
+                    <th>Action</th>
                 </thead>
                 <tbody>
                     <?php
@@ -49,17 +51,19 @@
                             <td><?php echo $row['Product_img']; ?></td>
                             <td><?php echo $row['PType_name']; ?></td>
                             <td><?php echo $row['PetType_name']; ?></td>
-                            <td> <a href="editform.php">Edit</a> ||
-                                <a href="#del<?php echo $row['product_id']; ?>" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                            <td>
+                                <a href="#edit<?php echo $row['Product_id']; ?>" data-toggle="modal" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a> ||
+                                <a href="#del<?php echo $row['Product_id']; ?>" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                                <?php include('productaction.php'); ?>
                             </td>
                         </tr>
                     <?php
                     }
-
                     ?>
                 </tbody>
             </table>
         </div>
+        <?php include('add.php'); ?>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
