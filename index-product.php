@@ -43,7 +43,7 @@
                 </thead>
                 <tbody>
                     <?php
-				include('connect.php');
+				include('conn.php');
 				$query=mysqli_query($conn,"select * from product ");
 				while($row=mysqli_fetch_array($query)){
 					?>
@@ -58,7 +58,7 @@
 						<td><?php echo $row['deletedAt']; ?></td>
 						<td><?php echo $row['updatedAt']; ?></td>
 
-                   <td> <a href="editform.php">Edit</a> ||
+                   <td> <a href="#edit_modal<?php echo $row['product_id']; ?>">Edit</a> ||
                     <a href="#del<?php echo $row['product_id']; ?>" data-toggle="modal" class="btn btn-danger"><span
                             class="glyphicon glyphicon-trash"></span> Delete</a>
                    </td>
