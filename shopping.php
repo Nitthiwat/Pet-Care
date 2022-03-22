@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="/js/loadmore.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="fontawesome-free-6.0.0-web/css/all.css" rel="stylesheet">
+
     <title>Shopping</title>
     <style>
         .cut-text-multi {
@@ -21,6 +23,7 @@
 </head>
 
 <body>
+    <?php include('usermenu.php'); ?>
     <img src="./img/HeadShop.jpg" class="img-fluid w-100" alt="..." style="height: 60vh;">
 
     <div class="container">
@@ -66,7 +69,6 @@
                     }
                     ?>
                 </div>
-                <button type="button" class="btn btn-secondary loadmore">Secondary</button>
             </div>
             <div class="my-4">
                 <h5 id="scrollspyCat">หมวดหมู่แมว</h5>
@@ -138,7 +140,7 @@
                 </div>
             </div>
         </div>
-    </div>+
+    </div>
     <script src="js/bootstrap.min.js"></script>
 </body>
 
