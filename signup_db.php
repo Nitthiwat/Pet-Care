@@ -4,30 +4,30 @@
     require_once 'config/db.php';
 
     if (isset($_POST['signup'])) {
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
         $username = $_POST['username'];
-        $email = $_POST['email'];
         $password = $_POST['password'];
         $c_password = $_POST['c_password'];
-        $bday = $_POST['bday'];
-        $numphone = $_POST['numphone'];
-        $address = $_POST['address'];
+        $User_fname = $_POST['User_fname'];
+        $User_lname = $_POST['User_lname'];
+        $User_email = $_POST['User_email'];  
+        $User_birthday = $_POST['User_birthday'];
+        $User_phone = $_POST['User_phone'];
+        $User_address = $_POST['User_address'];
         $urole = 'user';
 
-        if (empty($firstname)) {
+        if (empty($User_fname)) {
             $_SESSION['error'] = 'กรุณากรอกชื่อ';
             header("location: signup.php");
-        } else if (empty($lastname)) {
+        } else if (empty($User_lname)) {
             $_SESSION['error'] = 'กรุณากรอกนามสกุล';
             header("location: signup.php");
         } else if (empty($username)) {
             $_SESSION['error'] = 'กรุณากรอกชื่อผู้ใช้';
             header("location: signup.php");
-        } else if (empty($email)) {
+        } else if (empty($User_email)) {
             $_SESSION['error'] = 'กรุณากรอกอีเมล';
             header("location: signup.php");
-        } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        } else if (!filter_var($User_email, FILTER_VALIDATE_EMAIL)) {
             $_SESSION['error'] = 'รูปแบบอีเมลไม่ถูกต้อง';
             header("location: signup.php");
         } else if (empty($password)) {
@@ -42,13 +42,13 @@
         } else if ($password != $c_password) {
             $_SESSION['error'] = 'รหัสผ่านไม่ตรงกัน';
             header("location: signup.php");
-        }  else if (empty($bday)) {
+        }  else if (empty($User_birthday)) {
             $_SESSION['error'] = 'กรุณากรอกวัน/เดือน/ปีเกิด';
             header("location: signup.php");
-        }else if (empty($numphone)) {
+        }else if (empty($User_phone)) {
             $_SESSION['error'] = 'กรุณากรอกเบอร์โทรศัพท์';
             header("location: signup.php");
-        }else if (empty($address)) {
+        }else if (empty($User_address)) {
             $_SESSION['error'] = 'กรุณากรอกที่อยู่';
             header("location: signup.php");
         } else {
@@ -64,16 +64,16 @@
                     header("location: signup.php");
                 } else if (!isset($_SESSION['error'])) {
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                    $stmt = $conn->prepare("INSERT INTO users(firstname, lastname,username, email, password,bday,numphone,address, urole) 
-                                            VALUES(:firstname, :lastname,:username, :email, :password,:bday, :numphone, :address, :urole)");
-                    $stmt->bindParam(":firstname", $firstname);
-                    $stmt->bindParam(":lastname", $lastname);
+                    $stmt = $conn->prepare("INSERT INTO users(username, password,User_fname, User_lname, User_birthday,User_phone,User_email,User_address, urole) 
+                                            VALUES(:username, :password,:User_fname, :User_lname,:User_birthday, :User_phone, :User_email, :User_address, :urole)");
+                    $stmt->bindParam(":User_fname", $User_fname);
+                    $stmt->bindParam(":User_lname", $User_lname);
                     $stmt->bindParam(":username", $username);
-                    $stmt->bindParam(":email", $email);
+                    $stmt->bindParam(":User_email", $User_email);
                     $stmt->bindParam(":password", $passwordHash);
-                    $stmt->bindParam(":bday", $bday);
-                    $stmt->bindParam(":numphone", $numphone);
-                    $stmt->bindParam(":address", $address);
+                    $stmt->bindParam(":User_birthday", $User_birthday);
+                    $stmt->bindParam(":User_phone", $User_phone);
+                    $stmt->bindParam(":User_address", $User_address);
                     $stmt->bindParam(":urole", $urole);
                     $stmt->execute();
                     $_SESSION['success'] = "สมัครสมาชิกเรียบร้อยแล้ว! <a href='signin.php' class='alert-link'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";

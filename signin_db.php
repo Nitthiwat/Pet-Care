@@ -7,7 +7,6 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-      
         if (empty($username)) {
             $_SESSION['error'] = 'กรุณากรอกชื่อผู้ใช้';
             header("location: signin.php");
@@ -30,10 +29,10 @@
                     if ($username == $row['username']) {
                         if (password_verify($password, $row['password'])) {
                             if ($row['urole'] == 'admin') {
-                                $_SESSION['admin_login'] = $row['id'];
+                                $_SESSION['admin_login'] = $row['User_id'];
                                 header("location: admin.php");
                             } else {
-                                $_SESSION['user_login'] = $row['id'];
+                                $_SESSION['user_login'] = $row['User_id'];
                                 header("location: user.php");
                             }
                         } else {
