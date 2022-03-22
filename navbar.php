@@ -57,10 +57,10 @@
           <a class="nav-link text-light" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">About me</a>
+          <a class="nav-link text-light" href="signin.php">About me</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">Product</a>
+          <a class="nav-link text-light" href="signin.php">Product</a>
         </li>
       </ul>
      

@@ -1,12 +1,3 @@
-<?php
-
-session_start();
-require_once 'config/db.php';
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,9 +9,32 @@ require_once 'config/db.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="colors_bt5.css">
     <link rel="stylesheet" href="fontawesome-free-6.0.0-web/css/fontawesome.min.css">
     <link href="fontawesome-free-6.0.0-web/css/all.css" rel="stylesheet">
+    <style>
+        .content img {
+            float: left;
+            margin-right: 2em;
+        }
+
+        .info p {
+            width: 85%;
+            padding: left 2em;
+        }
+
+        .cut-text-multi {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            max-height: 3rem;
+        }
+
+        .my-4 h2 {
+            margin-bottom: 2em;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
