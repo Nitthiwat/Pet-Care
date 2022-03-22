@@ -32,7 +32,7 @@
                         <p class="opacity-75"><?php echo $row['Product_detail']; ?></p>
                         <div class="d-flex justify-content-between align-items-center">
                             <h5>ราคา: <?php echo $row['Product_price']; ?> บาท</h5>
-                            <form action="add_order.php?Product_id=<?php echo $id; ?>" method="post" class="d-flex g-2">
+                            <form action="order.php?Product_id=<?php echo $id; ?>" method="post" class="d-flex g-2">
                                 <input type="number" class="form-control mx-1" name="quantity" style="width: 80px;">
                                 <button type="submit" class="btn btn-primary mx-1">ซื้อสินค้า</button>
                                 <span class="pull-left"><a href="/shopping.php" data-toggle="modal" class="btn btn-primary">ตะกร้าสินค้า</a></button>
