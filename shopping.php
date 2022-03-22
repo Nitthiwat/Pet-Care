@@ -66,7 +66,6 @@
                     }
                     ?>
                 </div>
-                <button type="button" class="btn btn-secondary loadmore">Secondary</button>
             </div>
             <div class="my-4">
                 <h5 id="scrollspyCat">หมวดหมู่แมว</h5>
