@@ -21,26 +21,11 @@ if (!isset($_SESSION['user_login'])) {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="colors_bt5.css">
-
     <link rel="stylesheet" href="fontawesome-free-6.0.0-web/css/fontawesome.min.css">
     <link href="fontawesome-free-6.0.0-web/css/all.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- <div class="container">
-        <?php
-
-        if (isset($_SESSION['user_login'])) {
-            $user_id = $_SESSION['user_login'];
-            $stmt = $conn->query("SELECT * FROM users WHERE User_id = $user_id");
-            $stmt->execute();
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        }
-        ?>
-        <h3 class="mt-4">Welcome, <?php echo $row['User_fname'] . ' ' . $row['User_lname'] ?></h3>
-        <a href="logout.php" class="btn btn-danger">Logout</a>
-    </div> -->
-
     <div class="container-fluid ps-5 pe-0 d-none d-lg-block" style="background-color:#502064; color: white;">
         <div class="row gx-0">
             <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
@@ -86,7 +71,7 @@ if (!isset($_SESSION['user_login'])) {
     </nav>
     <ul class="nav nav-tabs bd-gray-600 px-4">
         <li class="nav-item ">
-            <a class="nav-link text-light" href="index.php">Home</a>
+            <a class="nav-link text-light" href="user.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-light" href="#">About me</a>
@@ -95,6 +80,11 @@ if (!isset($_SESSION['user_login'])) {
             <a class="nav-link text-light" href="#">Product</a>
         </li>
     </ul>
+    <?php include('imgslide.php'); ?>
+    <?php include('content.php'); ?>
+    <?php include('knowledge.php'); ?>
+    <?php include('about_me.php'); ?>
+    <?php include('footer.php'); ?>
 </body>
 
 </html>
