@@ -31,14 +31,14 @@
                     <?php
                     include('conn.php');
                     $qty = $_POST['quantity'];
-                    $pd_id = $_GET['Product_id'];
+                    $pd_id = $_SESSION['Product_id'];
                     $query = mysqli_query($conn, "select * from product where Product_id ='" . $pd_id . "'");
                     $row = mysqli_fetch_array($query); {
                         $total_price = $row['Product_price'] * $qty;
                     ?>
                         <tr>
                             <td><img src="<?php echo $row['Product_img']; ?>" alt="..." style="width: 250px;"></td>
-                            <td><?php echo $row['Product_name']; ?></td>
+                            <td style="width: 400px;"><?php echo $row['Product_name']; ?></td>
                             <td>
                                 <?php
                                 $user_query = mysqli_query($conn, "select * from users where User_id ='" . $user_id . "'");
@@ -49,8 +49,8 @@
                             <td><?php echo $row['Product_price']; ?> บาท</td>
                             <td><?php echo $qty; ?></td>
                             <td><?php echo $total_price; ?> บาท</td>
-                            <td> 
-                                <a href="#shop<?php echo $row['Product_id']; ?>" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span> สั่งซื้อ</a>
+                            <td>
+                                <a href="#shop<?php echo $pd_id ?>" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span>สั่งซื้อ</a>
                                 <?php include('order_action.php'); ?>
                             </td>
                         </tr>

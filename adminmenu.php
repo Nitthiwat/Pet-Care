@@ -33,14 +33,14 @@
                             session_start();
                             require_once 'config/db.php';
 
-                            if (isset($_SESSION['user_login'])) {
-                                $user_id = $_SESSION['user_login'];
-                                $stmt = $conn->query("SELECT * FROM users WHERE User_id = $user_id");
+                            if (isset($_SESSION['admin_login'])) {
+                                $admin_id = $_SESSION['admin_login'];
+                                $stmt = $conn->query("SELECT * FROM users WHERE User_id = $admin_id");
                                 $stmt->execute();
                                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                             }
                             ?>
-                            <span>Welcome, <?php echo $row['User_fname'] . ' ' . $row['User_lname'] ?></span>
+                            <span>Welcome Admin, <?php echo $row['firstname'] . ' ' . $row['lastname'] ?></span>
                         </li>
                         <li class="nav-item">
                             <a href="logout.php" class="btn btn-danger">Logout</a>

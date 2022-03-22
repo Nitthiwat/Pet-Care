@@ -17,7 +17,9 @@
         <div class="container" data-aos="zoom-out">
             <?php
             include('conn.php');
+            
             $id = $_GET['Product_id'];
+            $_SESSION['Product_id'] = $id;
             $query = mysqli_query($conn, "select * from product where Product_id='" . $id . "'");
             while ($row = mysqli_fetch_array($query)) {
             ?>
@@ -32,7 +34,7 @@
                         <p class="opacity-75"><?php echo $row['Product_detail']; ?></p>
                         <div class="d-flex justify-content-between align-items-center">
                             <h5>ราคา: <?php echo $row['Product_price']; ?> บาท</h5>
-                            <form action="order.php?Product_id=<?php echo $id; ?>" method="post" class="d-flex g-2">
+                            <form action="order.php" method="post" class="d-flex g-2">
                                 <input type="number" class="form-control mx-1" name="quantity" style="width: 80px;">
                                 <button type="submit" class="btn btn-primary mx-1">ซื้อสินค้า</button>
                                 <span class="pull-left"><a href="/shopping.php" data-toggle="modal" class="btn btn-primary">ตะกร้าสินค้า</a></button>
