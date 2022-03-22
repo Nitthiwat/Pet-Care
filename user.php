@@ -6,7 +6,6 @@
         $_SESSION['error'] = 'กรุณาเข้าสู่ระบบ!';
         header('location: signin.php');
     }
-
 ?>
 
 
@@ -25,12 +24,12 @@
 
             if (isset($_SESSION['user_login'])) {
                 $user_id = $_SESSION['user_login'];
-                $stmt = $conn->query("SELECT * FROM users WHERE id = $user_id");
+                $stmt = $conn->query("SELECT * FROM users WHERE User_id = $user_id");
                 $stmt->execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
             }
         ?>
-        <h3 class="mt-4">Welcome, <?php echo $row['firstname'] . ' ' . $row['lastname'] ?></h3>
+        <h3 class="mt-4">Welcome, <?php echo $row['User_fname'] . ' ' . $row['User_lname'] ?></h3>
         <a href="logout.php" class="btn btn-danger">Logout</a>
     </div>
 </body>

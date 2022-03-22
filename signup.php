@@ -46,20 +46,20 @@
             <?php } ?>
 
             <div class="mb-2">
-                <label for="firstname" class="form-label">First name</label>
-                <input type="text" class="form-control" name="firstname" aria-describedby="firstname">
+                <label for="User_fname" class="form-label">First name</label>
+                <input type="text" class="form-control" name="User_fname" aria-describedby="User_fname">
             </div>
             <div class="mb-2">
-                <label for="lastname" class="form-label">Last name</label>
-                <input type="text" class="form-control" name="lastname" aria-describedby="lastname">
+                <label for="User_lname" class="form-label">Last name</label>
+                <input type="text" class="form-control" name="User_lname" aria-describedby="User_lname">
             </div>
             <div class="mb-2">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" name="username" aria-describedby="username">
             </div>
             <div class="mb-2">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" aria-describedby="email">
+                <label for="User_email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="User_email" aria-describedby="User_email">
             </div>
             <div class="mb-2">
                 <label for="password" class="form-label">Password</label>
@@ -70,16 +70,16 @@
                 <input type="password" class="form-control" name="c_password">
             </div>
             <div class="mb-2">
-                <label for="bday" class="form-label">Your Birthday</label>
-                <input type="date" class="form-control" name="bday">
+                <label for="User_birthday" class="form-label">Your Birthday</label>
+                <input type="date" class="form-control" name="User_birthday">
             </div>
             <div class="mb-2">
-                <label for="numphone" class="form-label">Your Phone Number</label>
-                <input type="number" class="form-control" name="numphone">
+                <label for="User_phone" class="form-label">Your Phone Number</label>
+                <input type="number" class="form-control" name="User_phone">
             </div>
             <div class="mb-2">
-                <label for="address" class="form-label">Your Address</label>
-                <input type="text" class="form-control" name="address">
+                <label for="User_address" class="form-label">Your Address</label>
+                <input type="text" class="form-control" name="User_address">
             </div>
             <button type="submit" name="signup" class="btn" style="background-color:#502064; color: white;">Sign Up</button>
         </form>
