@@ -4,21 +4,12 @@
     require_once 'config/db.php';
 
     if (isset($_POST['signup'])) {
-<<<<<<< HEAD
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $c_password = $_POST['c_password'];
-        $User_fname = $_POST['User_fname'];
-        $User_lname = $_POST['User_lname'];
-        $User_email = $_POST['User_email'];  
-=======
         $User_fname = $_POST['User_fname'];
         $User_lname = $_POST['User_lname'];
         $username = $_POST['username'];
         $User_email = $_POST['User_email'];
         $password = $_POST['password'];
         $c_password = $_POST['c_password'];
->>>>>>> main
         $User_birthday = $_POST['User_birthday'];
         $User_phone = $_POST['User_phone'];
         $User_address = $_POST['User_address'];
@@ -97,6 +88,3 @@
             }
         }
     }
-
-
-?>
