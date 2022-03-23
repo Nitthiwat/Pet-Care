@@ -17,7 +17,6 @@
             <span class="my-5 " style="font-size:25px; color:blue">
                 <center><strong>รายละเอียดการสั่งซื้อ</strong></center>
             </span>
-            <!-- <a href="add.php">Add product</a> -->
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <th>สินค้า</th>
@@ -51,7 +50,7 @@
                             <td><?php echo $total_price; ?> บาท</td>
                             <td>
                                 <a href="#shop<?php echo $pd_id ?>" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span>สั่งซื้อ</a>
-                                <?php include('order_action.php'); ?>
+                                <?php include('orderaction.php'); ?>
                             </td>
                         </tr>
                     <?php
@@ -59,6 +58,7 @@
                     ?>
                 </tbody>
             </table>
+            <?php include('add_order.php'); ?>
         </div>
 </body>
 

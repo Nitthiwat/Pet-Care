@@ -7,7 +7,6 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-      
         if (empty($username)) {
             $_SESSION['error'] = 'กรุณากรอกชื่อผู้ใช้';
             header("location: signin.php");
