@@ -51,7 +51,7 @@
                             <td><?php echo $total_price; ?> บาท</td>
                             <td>
                                 <a href="#shop<?php echo $pd_id ?>" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span>สั่งซื้อ</a>
-                                <?php include('order_action.php'); ?>
+                                
                             </td>
                         </tr>
                     <?php

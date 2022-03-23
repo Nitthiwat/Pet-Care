@@ -62,9 +62,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link text-light" href="#">About me</a>
-        </li>
+        </li>   
         <li class="nav-item">
-            <a class="nav-link text-light" href="#">Product</a>
+            <a class="nav-link text-light" href="shopping.php">Product</a>
         </li>
     </ul>
 </body>
