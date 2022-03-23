@@ -67,7 +67,7 @@
 								<label class="control-label" style="position:relative; top:7px;">ประเภทสินค้า:</label>
 							</div>
 							<div class="col-lg-10">
-								<select class="form-control" id="PType_id">
+								<select class="form-control" name="PType_id">
 									<?php
 									include('conn.php');
 									$query = mysqli_query($conn, "select * from producttype");
@@ -84,7 +84,7 @@
 								<label class="control-label" style="position:relative; top:7px;">ประเภทสัตว์:</label>
 							</div>
 							<div class="col-lg-10">
-								<select class="form-control" id="PetType_id">
+								<select class="form-control" name="PetType_id">
 									<?php
 									include('conn.php');
 									$query = mysqli_query($conn, "select * from pettype");
@@ -95,13 +95,12 @@
 								</select>
 							</div>
 						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+							<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+						</div>
 					</form>
 				</div>
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
-			</div>
 		</div>
 	</div>
-</div>
