@@ -40,7 +40,7 @@
                                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                             }
                             ?>
-                            <span>Welcome Admin, <?php echo $row['firstname'] . ' ' . $row['lastname'] ?></span>
+                            <span>Welcome , <?php echo $row['User_fname'];?></span>
                         </li>
                         <li class="nav-item">
                             <a href="logout.php" class="btn btn-danger">Logout</a>
@@ -58,13 +58,13 @@
     </nav>
     <ul class="nav nav-tabs px-4" style="background-color: gray;">
         <li class="nav-item ">
-            <a class="nav-link text-light" href="user.php">Home</a>
+            <a class="nav-link text-light" href="admin.php">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-light" href="#">About me</a>
+            <a class="nav-link text-light" href="index-order.php">Order</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-light" href="#">Product</a>
+            <a class="nav-link text-light" href="index-product.php">Product</a>
         </li>
     </ul>
 </body>
