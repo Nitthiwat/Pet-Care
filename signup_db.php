@@ -4,12 +4,21 @@
     require_once 'config/db.php';
 
     if (isset($_POST['signup'])) {
+<<<<<<< HEAD
         $username = $_POST['username'];
         $password = $_POST['password'];
         $c_password = $_POST['c_password'];
         $User_fname = $_POST['User_fname'];
         $User_lname = $_POST['User_lname'];
         $User_email = $_POST['User_email'];  
+=======
+        $User_fname = $_POST['User_fname'];
+        $User_lname = $_POST['User_lname'];
+        $username = $_POST['username'];
+        $User_email = $_POST['User_email'];
+        $password = $_POST['password'];
+        $c_password = $_POST['c_password'];
+>>>>>>> main
         $User_birthday = $_POST['User_birthday'];
         $User_phone = $_POST['User_phone'];
         $User_address = $_POST['User_address'];
@@ -64,8 +73,8 @@
                     header("location: signup.php");
                 } else if (!isset($_SESSION['error'])) {
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                    $stmt = $conn->prepare("INSERT INTO users(username, password,User_fname, User_lname, User_birthday,User_phone,User_email,User_address, urole) 
-                                            VALUES(:username, :password,:User_fname, :User_lname,:User_birthday, :User_phone, :User_email, :User_address, :urole)");
+                    $stmt = $conn->prepare("INSERT INTO users(User_fname, User_lname,username, User_email, password,User_birthday,User_phone,User_address, urole) 
+                                            VALUES(:User_fname, :User_lname,:username, :User_email, :password,:User_birthday, :User_phone, :User_address, :urole)");
                     $stmt->bindParam(":User_fname", $User_fname);
                     $stmt->bindParam(":User_lname", $User_lname);
                     $stmt->bindParam(":username", $username);

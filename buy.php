@@ -11,13 +11,16 @@
 </head>
 
 <body>
-    <?php include('navbar.php'); ?>
+    <?php include('usermenu.php'); ?>
+
 
     <section id="cta" class="cta">
         <div class="container" data-aos="zoom-out">
             <?php
             include('conn.php');
+
             $id = $_GET['Product_id'];
+            $_SESSION['Product_id'] = $id;
             $query = mysqli_query($conn, "select * from product where Product_id='" . $id . "'");
             while ($row = mysqli_fetch_array($query)) {
             ?>
@@ -32,10 +35,11 @@
                         <p class="opacity-75"><?php echo $row['Product_detail']; ?></p>
                         <div class="d-flex justify-content-between align-items-center">
                             <h5>ราคา: <?php echo $row['Product_price']; ?> บาท</h5>
-                            <div>
-                                <span class="pull-left"><a href="/shopping.php" data-toggle="modal" class="btn btn-primary">ซื้อสินค้า</a></span>
-                                <span class="pull-left"><a href="/shopping.php" data-toggle="modal" class="btn btn-primary">ตะกร้าสินค้า</a></span>
-                            </div>
+                            <form action="order.php" method="post" class="d-flex">
+                                <input type="number" class="form-control mx-1" name="quantity" style="width: 80px;">
+                                <button type="submit" class="btn btn-primary mx-1">ซื้อสินค้า</button>
+                            </form>
+                            <a href="cart.php?Product_id=<?php echo $_SESSION['Product_id'] ?>&act=add" data-toggle="modal" class="btn btn-primary" type="summit">ตะกร้าสินค้า</a></span>
                         </div>
                     </div>
                 </div>

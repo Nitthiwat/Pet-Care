@@ -46,9 +46,22 @@ require_once 'config/db.php';
                     ?>
                 </div>
             <?php } ?>
+
+            <div class="mb-2">
+                <label for="User_fname" class="form-label">First name</label>
+                <input type="text" class="form-control" name="User_fname" aria-describedby="User_fname">
+            </div>
+            <div class="mb-2">
+                <label for="User_lname" class="form-label">Last name</label>
+                <input type="text" class="form-control" name="User_lname" aria-describedby="User_lname">
+            </div>
             <div class="mb-2">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" name="username" aria-describedby="username">
+            </div>
+            <div class="mb-2">
+                <label for="User_email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="User_email" aria-describedby="User_email">
             </div>
             <div class="mb-2">
                 <label for="password" class="form-label">Password</label>
@@ -59,24 +72,12 @@ require_once 'config/db.php';
                 <input type="password" class="form-control" name="c_password">
             </div>
             <div class="mb-2">
-                <label for="User_fname" class="form-label">First name</label>
-                <input type="text" class="form-control" name="User_fname" aria-describedby="User_fname">
-            </div>
-            <div class="mb-2">
-                <label for="User_lname" class="form-label">Last name</label>
-                <input type="text" class="form-control" name="User_lname" aria-describedby="User_lname">
-            </div>
-            <div class="mb-2">
                 <label for="User_birthday" class="form-label">Your Birthday</label>
                 <input type="date" class="form-control" name="User_birthday">
             </div>
             <div class="mb-2">
                 <label for="User_phone" class="form-label">Your Phone Number</label>
                 <input type="number" class="form-control" name="User_phone">
-            </div>
-            <div class="mb-2">
-                <label for="User_email" class="form-label">Email</label>
-                <input type="email" class="form-control" name="User_email" aria-describedby="User_email">
             </div>
             <div class="mb-2">
                 <label for="User_address" class="form-label">Your Address</label>
