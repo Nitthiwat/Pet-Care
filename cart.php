@@ -58,7 +58,7 @@ if ($act == 'update') {
                     if (!empty($_SESSION['cart'])) {
                         include("conn.php");
                         foreach ($_SESSION['cart'] as $Product_id => $qty) {
-                            $sql = "select * from product where Product_id=$Product_id";
+                            $sql = "select * from product where Product_id='$Product_id'";
                             $query = mysqli_query($conn, $sql);
                             $row = mysqli_fetch_array($query);
                             $sum = $row['Product_price'] * $qty;
