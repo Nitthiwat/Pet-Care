@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -36,9 +36,9 @@
                         $total_price = $row['Product_price'] * $qty;
                     ?>
                         <tr>
-                            <td><img src="<?php echo $row['Product_img']; ?>" alt="..." style="width: 250px;"></td>
-                            <td style="width: 400px;"><?php echo $row['Product_name']; ?></td>
-                            <td>
+                            <td class="text-center"><img src="<?php echo $row['Product_img']; ?>" alt="..." style="width: 250px;"></td>
+                            <td style="width: 350px;"><?php echo $row['Product_name']; ?></td>
+                            <td style="width: 250px;">
                                 <?php
                                 $user_query = mysqli_query($conn, "select * from users where User_id ='" . $user_id . "'");
                                 $urow = mysqli_fetch_array($user_query);
@@ -49,8 +49,8 @@
                             <td><?php echo $qty; ?></td>
                             <td><?php echo $total_price; ?> บาท</td>
                             <td>
-                                <a href="#shop<?php echo $pd_id ?>" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span>สั่งซื้อ</a>
-                                <?php include('orderaction.php'); ?>
+                                <span class="pull-left"><a href="#shop" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>สั่งซื้อ</a></span>
+                                <?php include('shop.php'); ?>
                             </td>
                         </tr>
                     <?php
@@ -58,7 +58,7 @@
                     ?>
                 </tbody>
             </table>
-            <?php include('add_order.php'); ?>
+
         </div>
 </body>
 
