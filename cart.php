@@ -1,30 +1,3 @@
-<?php
-session_start();
-
-$Product_id = $_GET['Product_id'];
-$act = $_GET['act'];
-
-if ($act == 'add' && !empty($Product_id)) {
-    if (isset($_SESSION['cart'][$Product_id])) {
-        $_SESSION['cart'][$Product_id];
-    } else {
-        $_SESSION['cart'][$Product_id] = 1;
-    }
-}
-
-if ($act == 'remove' && !empty($Product_id))  //ยกเลิกการสั่งซื้อ
-{
-    unset($_SESSION['cart'][$Product_id]);
-}
-
-if ($act == 'update') {
-    $amount_array = $_POST['amount'];
-    foreach ($amount_array as $Product_id => $amount) {
-        $_SESSION['cart'][$Product_id] = $amount;
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -34,6 +7,31 @@ if ($act == 'update') {
 </head>
 
 <body>
+    <?php include('usermenu.php');
+    $Product_id = $_GET['Product_id'];
+    $act = $_GET['act'];
+
+    if ($act == 'add' && !empty($Product_id)) {
+        if (isset($_SESSION['cart'][$Product_id])) {
+            $_SESSION['cart'][$Product_id];
+        } else {
+            $_SESSION['cart'][$Product_id] = 1;
+        }
+    }
+
+    if ($act == 'remove' && !empty($Product_id))  //ยกเลิกการสั่งซื้อ
+    {
+        unset($_SESSION['cart'][$Product_id]);
+    }
+
+    if ($act == 'update') {
+        $amount_array = $_POST['amount'];
+        foreach ($amount_array as $Product_id => $amount) {
+            $_SESSION['cart'][$Product_id] = $amount;
+        }
+    }
+    ?>
+    <br>
     <form id="frmcart" name="frmcart" method="post" action="?Product_id=<?php echo $Product_id ?>&act=update">
         <table width="600" border="0" align="center" class="square">
             <tr>
