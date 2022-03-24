@@ -25,12 +25,12 @@
             <!-- <a href="add.php">Add product</a> -->
             <table class="table table-striped table-bordered table-hover">
                 <thead>
-                    <th>รหัสการสั่งซื้อ</th>
-                    <th>สินค้า</th>
+                    <th>รหัส</th>
+                    <th style="width: 250px;">สินค้า</th>
                     <th>จำนวน</th>
                     <th>ราคารวม</th>
                     <th>วันที่สั่งซื้อสินค้า</th>
-                    <th>ที่อยู่การจัดส่ง</th>
+                    <th style="width: 300px;">ที่อยู่การจัดส่ง</th>
                     <th>สถานะ</th>
                     <th>รูปสลิปการโอนเงิน</th>
                     <th>Action</th>
@@ -38,23 +38,30 @@
                 <tbody>
                     <?php
                     include('conn.php');
-                    $sql = "select * from order_detail join order on(order_detail.Order_id = order.Order_id) join product on(order_detail.Product_id = product.Product_id)";
+                    $sql = "select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id)";
                     $query = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_array($query)) {
                     ?>
                         <tr></tr>
                             <td><?php echo $row['Order_id']; ?></td>
                             <td><?php echo $row['Product_name']; ?></td>
-                            <td><?php echo $row['Order_Qty']; ?></td>
-                            <td><?php echo $row['Order_sumprice']; ?></td>
+                            <td><?php echo $row['detail_qty']; ?></td>
+                            <td><?php echo $row['detail_sumprice']; ?></td>
                             <td><?php echo $row['Order_date']; ?></td>
                             <td><?php echo $row['Order_address']; ?></td>
-                            <td><?php echo $row['Order_status']; ?></td>
+                            <td>
+                                <?php $status = $row['Order_status'];
+                                    if($status = 1){
+                                        echo "รอการชำระเงิน";
+                                    }else if($status = 2){
+                                        echo "ชำระเงินแล้ว";
+                                    }
+                                ?>
+                            </td>
                             <td></td>
                             <td>
-                                <a href="#edit<?php echo $row['Product_id']; ?>" data-toggle="modal" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a> ||
-                                <a href="#del<?php echo $row['Product_id']; ?>" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                                <?php include('productaction.php'); ?>
+                                <a href="#confirm<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                                <?php include('orderaction.php'); ?>
                             </td>
                         </tr>
                     <?php
