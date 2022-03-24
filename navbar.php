@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Pet Store</title>
+  <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" />
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -38,7 +39,7 @@
                           <a class="nav-link text-light" href="./signup.php" data-bs-toggle="modal" >Sign up</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link text-light" href="./signin.php"  data-bs-toggle="modal" >Login</a>
+                          <a class="nav-link text-light" href="./signin.php"  data-bs-toggle="modal" >Signin</a>
                         </li>
                         
                       </ul>
@@ -49,7 +50,7 @@
       <!-- Topbar End -->
       <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-4">
         <a href="index.php" class="navbar-brand p-0">
-            <h1 class="m-0 text-secondary"><i class="#"></i>Pet Care</h1>
+            <h1 class="m-0 text-secondary"><i class="#"></i>Pet Store</h1>
         </a>
       </nav>
       <ul class="nav nav-tabs bd-gray-600 px-4">
@@ -57,7 +58,7 @@
           <a class="nav-link text-light" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="signin.php">About me</a>
+          <a class="nav-link text-light" href="#">About me</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="signin.php">Product</a>
