@@ -36,7 +36,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <h5>ราคา: <?php echo $row['Product_price']; ?> บาท</h5>
                             <form action="order.php" method="post" class="d-flex">
-                                <input type="number" class="form-control mx-1" name="quantity" style="width: 80px;">
+                                <input type="number" class="form-control mx-1" name="quantity" value="1" min="1" style="width: 80px;">
                                 <button type="submit" class="btn btn-primary mx-1">ซื้อสินค้า</button>
                             </form>
                             <a href="cart.php?Product_id=<?php echo $_SESSION['Product_id'] ?>&act=add" data-toggle="modal" class="btn btn-primary" type="summit">ตะกร้าสินค้า</a></span>
