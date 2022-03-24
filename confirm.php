@@ -61,10 +61,6 @@ include("conn.php");
                 </td>
             </tr>
             <tr>
-                <td bgcolor="#EEEEEE">อีเมล</td>
-                <td><input name="email" type="email" id="email" required /></td>
-            </tr>
-            <tr>
                 <td bgcolor="#EEEEEE">เบอร์ติดต่อ</td>
                 <td><input name="phone" type="text" id="phone" required /></td>
             </tr>

@@ -73,10 +73,12 @@ if ($act == 'update') {
                 echo "<td align='right' bgcolor='#CEE7FF'>" . "<b>" . number_format($total, 2) . "</b>" . "</td>";
                 echo "<td align='left' bgcolor='#CEE7FF'></td>";
                 echo "</tr>";
+                $_SESSION['Product_Qty'] = $qty;
+                $_SESSION['Product_totalprice'] = $total;
             }
             ?>
             <tr>
-                <td><a href="product_test.php">กลับหน้ารายการสินค้า</a></td>
+                <td><a href="shopping.php">กลับหน้ารายการสินค้า</a></td>
                 <td colspan="4" align="right">
                     <input type="submit" name="button" id="button" value="ปรับปรุง" />
                     <input type="button" name="Submit2" value="สั่งซื้อ" onclick="window.location='confirm.php';" />
