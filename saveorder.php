@@ -52,10 +52,10 @@ include("conn.php");
         $msg = "บันทึกข้อมูลไม่สำเร็จ กรุณาติดต่อเจ้าหน้าที่ค่ะ ";
     }
     ?>
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         alert("<?php echo $msg; ?>");
         window.location = 'shopping.php';
-    </script> -->
+    </script>
 
 
 

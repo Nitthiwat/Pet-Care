@@ -66,13 +66,8 @@
             <a class="nav-link text-light" href="user.php">Home</a>
         </li>
         <li class="nav-item">
-<<<<<<< HEAD
             <a class="nav-link text-light" href="userprofile.php">Profile</a>
         </li>
-=======
-            <a class="nav-link text-light" href="#">About me</a>
-        </li>   
->>>>>>> 5d9c9a79baf4965cca2a702bda0ad0ae91028bb4
         <li class="nav-item">
             <a class="nav-link text-light" href="shopping.php">Product</a>
         </li>
