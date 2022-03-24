@@ -44,10 +44,10 @@
                 <td align="center" bgcolor="#EAEAEA">ราคา</td>
                 <td align="center" bgcolor="#EAEAEA">จำนวน</td>
                 <td align="center" bgcolor="#EAEAEA">รวม(บาท)</td>
-                <td align="center" bgcolor="#EAEAEA">ลบ</td>
             </tr>
             <?php
             $total = 0;
+            $quantity = $_POST['quantity'];
             if (!empty($_SESSION['cart'])) {
                 include("conn.php");
                 foreach ($_SESSION['cart'] as $Product_id => $qty) {
@@ -60,14 +60,12 @@
                     echo "<td width='334'>" . $row["Product_name"] . "</td>";
                     echo "<td width='46' align='right'>" . number_format($row["Product_price"], 2) . "</td>";
                     echo "<td width='57' align='right'>";
-                    echo "<input type='text' name='amount[$Product_id]' value='$qty' size='2'/></td>";
+                    echo "<input type='text' name='amount[$Product_id]' value='$quantity' size='2'/></td>";
                     echo "<td width='93' align='right'>" . number_format($sum, 2) . "</td>";
-                    //remove product
-                    echo "<td width='46' align='center'><a href='cart.php?Product_id=$Product_id&act=remove'>ลบ</a></td>";
                     echo "</tr>";
                 }
                 echo "<tr>";
-                echo "<td colspan='3' bgcolor='#CEE7FF' align='center'><b>ราคารวม</b></td>";
+                echo "<td colspan='2' bgcolor='#CEE7FF' align='center'><b>ราคารวม</b></td>";
                 echo "<td align='right' bgcolor='#CEE7FF'>" . "<b>" . number_format($total, 2) . "</b>" . "</td>";
                 echo "<td align='left' bgcolor='#CEE7FF'></td>";
                 echo "</tr>";
@@ -76,9 +74,9 @@
             }
             ?>
             <tr>
-                <td><a href="shopping.php">กลับหน้ารายการสินค้า</a></td>
+                <!-- <td><a href="shopping.php">กลับหน้ารายการสินค้า</a></td> -->
                 <td colspan="4" align="right">
-                    <input type="submit" name="button" id="button" value="ปรับปรุง" />
+                    <!-- <input type="submit" name="button" id="button" value="ปรับปรุง" /> -->
                     <input type="button" name="Submit2" value="สั่งซื้อ" onclick="window.location='confirm.php';" />
                 </td>
             </tr>

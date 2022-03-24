@@ -42,14 +42,14 @@ include("conn.php");
 
     if ($query1 && $query4) {
         mysqli_query($conn, "COMMIT");
-        $msg = "บันทึกข้อมูลเรียบร้อยแล้ว ";
+        $msg = "สั่งสินค้าเรียบร้อยแล้ว ";
         foreach ($_SESSION['cart'] as $Product_id) {
             unset($_SESSION['cart'][$Product_id]);
             unset($_SESSION['cart']);
         }
     } else {
         mysqli_query($conn, "ROLLBACK");
-        $msg = "บันทึกข้อมูลไม่สำเร็จ กรุณาติดต่อเจ้าหน้าที่ค่ะ ";
+        $msg = "ไม่สามารถสั่งสินค้าได้";
     }
     ?>
     <script type="text/javascript">
