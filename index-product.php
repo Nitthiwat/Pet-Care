@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <?php include('navbar.php'); ?>
+    <?php include('adminmenu.php'); ?>
     <div class="container my-5">
         <div class="well">
             <span class="my-5" style="font-size:25px; color:blue">

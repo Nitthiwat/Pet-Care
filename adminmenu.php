@@ -7,12 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="colors_bt5.css">
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" />
-    <title>Pet Store</title>
-  
-  <link rel="stylesheet" href="fontawesome-free-6.0.0-web/css/fontawesome.min.css">
-  <link href="fontawesome-free-6.0.0-web/css/all.css" rel="stylesheet">
+    <link href="fontawesome-free-6.0.0-web/css/all.css" rel="stylesheet">
 </head>
 
 <body>
@@ -38,14 +33,14 @@
                             session_start();
                             require_once 'config/db.php';
 
-                            if (isset($_SESSION['user_login'])) {
-                                $user_id = $_SESSION['user_login'];
-                                $stmt = $conn->query("SELECT * FROM users WHERE User_id = $user_id");
+                            if (isset($_SESSION['admin_login'])) {
+                                $admin_id = $_SESSION['admin_login'];
+                                $stmt = $conn->query("SELECT * FROM users WHERE User_id = $admin_id");
                                 $stmt->execute();
                                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                             }
                             ?>
-                            <span>Welcome, <?php echo $row['User_fname'] . ' ' . $row['User_lname'] ?></span>
+                            <span>Welcome , <?php echo $row['User_fname'];?></span>
                         </li>
                         <li class="nav-item">
                             <a href="logout.php" class="btn btn-danger">Logout</a>
@@ -57,24 +52,19 @@
     </div>
     <!-- Topbar End -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-4">
-        <a href="user.php" class="navbar-brand p-0">
-            <h1 class="m-0 text-secondary"><i class="#" ></i>Pet Store</h1>
+        <a href="index.php" class="navbar-brand p-0">
+            <h1 class="m-0 text-secondary"><i class="#"></i>Pet Care</h1>
         </a>
     </nav>
     <ul class="nav nav-tabs px-4" style="background-color: gray;">
         <li class="nav-item ">
-            <a class="nav-link text-light" href="user.php">Home</a>
+            <a class="nav-link text-light" href="admin.php">Home</a>
         </li>
         <li class="nav-item">
-<<<<<<< HEAD
-            <a class="nav-link text-light" href="userprofile.php">Profile</a>
+            <a class="nav-link text-light" href="index-order.php">Order</a>
         </li>
-=======
-            <a class="nav-link text-light" href="#">About me</a>
-        </li>   
->>>>>>> 5d9c9a79baf4965cca2a702bda0ad0ae91028bb4
         <li class="nav-item">
-            <a class="nav-link text-light" href="shopping.php">Product</a>
+            <a class="nav-link text-light" href="index-product.php">Product</a>
         </li>
     </ul>
 </body>

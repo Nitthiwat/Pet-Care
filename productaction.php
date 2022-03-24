@@ -60,12 +60,11 @@
             <label class="form-label">รูป</label>
             <input type="text" class="form-control" name="Product_img" value="<?php echo $erow['Product_img']; ?>" />
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-        <button type="submit" class="btn btn-primary">Save</button>
-      </div>
-      </form>
     </div>
   </div>
-</div>

@@ -1,12 +1,13 @@
-<?php 
+<?php
 
-    session_start();
-    require_once 'config/db.php';
+session_start();
+require_once 'config/db.php';
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,33 +16,34 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
+
 <body>
     <?php include('navbar_signup.php'); ?>
     <div class="container">
         <h1 style="margin-top:2%;color:#502064;">Signup</h1>
         <hr>
         <form action="signup_db.php" method="post">
-            <?php if(isset($_SESSION['error'])) { ?>
+            <?php if (isset($_SESSION['error'])) { ?>
                 <div class="alert alert-danger" role="alert">
-                    <?php 
-                        echo $_SESSION['error'];
-                        unset($_SESSION['error']);
+                    <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
                     ?>
                 </div>
             <?php } ?>
-            <?php if(isset($_SESSION['success'])) { ?>
+            <?php if (isset($_SESSION['success'])) { ?>
                 <div class="alert alert-success" role="alert">
-                    <?php 
-                        echo $_SESSION['success'];
-                        unset($_SESSION['success']);
+                    <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
                     ?>
                 </div>
             <?php } ?>
-            <?php if(isset($_SESSION['warning'])) { ?>
+            <?php if (isset($_SESSION['warning'])) { ?>
                 <div class="alert alert-warning" role="alert">
-                    <?php 
-                        echo $_SESSION['warning'];
-                        unset($_SESSION['warning']);
+                    <?php
+                    echo $_SESSION['warning'];
+                    unset($_SESSION['warning']);
                     ?>
                 </div>
             <?php } ?>
@@ -87,6 +89,7 @@
         <hr>
         <p>Already a member? Click here to <a href="signin.php">Signin</a></p>
     </div>
-    
+
 </body>
+
 </html>
