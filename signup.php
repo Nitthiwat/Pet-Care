@@ -12,14 +12,15 @@ require_once 'config/db.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration System PDO</title>
+    <title>Pet Store</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
     <?php include('navbar_signup.php'); ?>
     <div class="container">
-        <h3 class="mt-3">สมัครสมาชิก</h3>
+        <h1 style="margin-top:2%;color:#502064;">Signup</h1>
         <hr>
         <form action="signup_db.php" method="post">
             <?php if (isset($_SESSION['error'])) { ?>
@@ -83,10 +84,10 @@ require_once 'config/db.php';
                 <label for="User_address" class="form-label">Your Address</label>
                 <input type="text" class="form-control" name="User_address">
             </div>
-            <button type="submit" name="signup" class="btn" style="background-color:#502064; color: white;">Sign Up</button>
+            <button type="submit" name="signup" class="btn" style="background-color:#502064; color: white;margin-top:1%;">Sign Up</button>
         </form>
         <hr>
-        <p>เป็นสมาชิกแล้วใช่ไหม คลิ๊กที่นี่เพื่อ <a href="signin.php">เข้าสู่ระบบ</a></p>
+        <p>Already a member? Click here to <a href="signin.php">Signin</a></p>
     </div>
 
 </body>
