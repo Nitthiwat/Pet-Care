@@ -50,7 +50,7 @@
                             <td><?php echo $total_price; ?> บาท</td>
                             <td>
                                 <span class="pull-left"><a href="#shop" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>สั่งซื้อ</a></span>
-                                <?php include('orderaction.php'); ?>
+                                <?php include('shop.php'); ?>
                             </td>
                         </tr>
                     <?php
