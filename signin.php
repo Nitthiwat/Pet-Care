@@ -6,13 +6,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration System PDO</title>
+    <title>Pet Store</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 <?php include('navbar_signin.php'); ?>
 <div class="container">
-        <h3 class="mt-4">เข้าสู่ระบบ</h3>
+        <h1 style="margin-top:2%;color:#502064;">Signin</h1>
+       
         <hr>
         <form action="signin_db.php" method="post">
             <?php if(isset($_SESSION['error'])) { ?>
@@ -39,10 +41,10 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" name="password">
             </div>
-            <button type="submit" name="signin" class="btn btn-primary">Sign In</button>
+            <button type="submit" name="signin" class="btn" style="background-color:#502064; color: white;">Sign In</button>
         </form>
         <hr>
-        <p>ยังไม่เป็นสมาชิกใช่ไหม คลิ๊กที่นี่เพื่อ <a href="signup.php">สมัครสมาชิก</a></p>
+        <p>Not a member yet? Click here for <a href="signup.php">Signup</a></p>
     </div>
     
 </body>

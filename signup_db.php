@@ -60,7 +60,7 @@
                 $row = $check_username->fetch(PDO::FETCH_ASSOC);
 
                 if ($row['username'] == $username) {
-                    $_SESSION['warning'] = "ชื่อผู้ใช้นี้มีอยู่ในระบบแล้ว <a href='signin.php'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";
+                    $_SESSION['warning'] = "This username already exists in the system. <a href='signin.php'>Click here </a> for signin";
                     header("location: signup.php");
                 } else if (!isset($_SESSION['error'])) {
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -76,10 +76,10 @@
                     $stmt->bindParam(":User_address", $User_address);
                     $stmt->bindParam(":urole", $urole);
                     $stmt->execute();
-                    $_SESSION['success'] = "สมัครสมาชิกเรียบร้อยแล้ว! <a href='signin.php' class='alert-link'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";
+                    $_SESSION['success'] = "Already a member! <a href='signin.php' class='alert-link'>Click here </a> for signin";
                     header("location: signup.php");
                 } else {
-                    $_SESSION['error'] = "มีบางอย่างผิดพลาด";
+                    $_SESSION['error'] = "something went wrong";
                     header("location: signup.php");
                 }
 
