@@ -16,7 +16,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-        <a href="confirmorder.php?Order_id=<?php echo $row['Order_id']; ?>" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span> Confirm</a>
+        <a href="confirmorder.php?Order_id=<?php echo $row['Order_id']; ?>" class="btn btn-success"><span class="glyphicon glyphicon-trash"></span> Confirm</a>
       </div>
     </div>
   </div>
