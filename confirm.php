@@ -69,6 +69,10 @@
                 <td><input name="phone" type="text" id="phone" value="<?php echo $urow['User_phone'];?>" required /></td>
             </tr>
             <tr>
+                <td bgcolor="#EEEEEE">สลิปการโอนเงิน</td>
+                <td><input type="file" name="slip"></td>
+            </tr>
+            <tr>
                 <td colspan="2" align="center" bgcolor="#CCCCCC">
                     <input type="submit" name="Submit2" value="สั่งซื้อ" />
                 </td>

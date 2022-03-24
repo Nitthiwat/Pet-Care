@@ -19,10 +19,23 @@ include("conn.php");
     $total_qty = $_SESSION['Product_Qty'];
     $total = $_SESSION['Product_totalprice'];
     $user_id = $_SESSION['user_login'];
+    $od_img = $_POST['slip'];
+
+
+    $file = $_FILES['slip'];
+    $filename = $_FILES["slip"]["name"];
+    $filTmpename = $_FILES["slip"]["tmp_name"];
+    $fileExt = explode(".", $filename);
+    $fileAcExt = strtolower(end($fileExt));
+    $newFilename = time() . "." . $fileAcExt;
+    $fileDes = 'order/' . $newFilename;
+    move_uploaded_file($filTmpename, $fileDes);
+    $sliplocation = $fileDes;
+
     $dttm = Date("Y-m-d G:i:s");
     //บันทึกการสั่งซื้อลงใน order_detail
     mysqli_query($conn, "BEGIN");
-    $sql1    = "insert into order_head values(null, '$dttm', '$name', '$address', '$phone', '$total_qty', '$total', '1','$user_id')";
+    $sql1    = "insert into order_head values(null, '$dttm', '$name', '$address', '$phone', '$total_qty', '$total', '1','$sliplocation','$user_id')";
     $query1    = mysqli_query($conn, $sql1);
     //ฟังก์ชั่น MAX() จะคืนค่าที่มากที่สุดในคอลัมน์ที่ระบุ ออกมา หรือจะพูดง่ายๆก็ว่า ใช้สำหรับหาค่าที่มากที่สุด นั่นเอง.
     $sql2 = "select max(Order_id) as Order_id from order_head where Order_name='$name' and Order_date='$dttm' ";
