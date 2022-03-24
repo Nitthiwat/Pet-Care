@@ -5,12 +5,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>เพิ่มลบข้อมูลสินค้า</title>
+    <title>Pet Store</title>
 
 </head>
 
@@ -62,8 +63,8 @@
                     ?>
                 </tbody>
             </table>
-        </div>
-        <?php include('add.php'); ?>
+        </div>1
+        <?php include('add.php'); ?>  
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

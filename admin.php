@@ -16,7 +16,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Page</title>
+    <title>Pet Store</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
@@ -25,12 +26,12 @@
 
             if (isset($_SESSION['admin_login'])) {
                 $admin_id = $_SESSION['admin_login'];
-                $stmt = $conn->query("SELECT * FROM users WHERE id = $admin_id");
+                $stmt = $conn->query("SELECT * FROM users WHERE User_id = $admin_id");
                 $stmt->execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
             }
         ?>
-        <h3 class="mt-4">Welcome Admin, <?php echo $row['firstname'] . ' ' . $row['lastname'] ?></h3>
+        <h3 class="mt-4">Welcome Admin, <?php echo $row['User_fname'] . ' ' . $row['User_lname'] ?></h3>
         <a href="logout.php" class="btn btn-danger">Logout</a>
     </div>
 </body>

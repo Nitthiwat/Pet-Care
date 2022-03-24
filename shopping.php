@@ -9,8 +9,9 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="fontawesome-free-6.0.0-web/css/all.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" />
 
-    <title>Shopping</title>
+    <title>Pet Store</title>
     <style>
         .cut-text-multi {
             display: -webkit-box;

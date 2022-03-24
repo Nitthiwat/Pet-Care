@@ -37,15 +37,15 @@
                                 header("location: user.php");
                             }
                         } else {
-                            $_SESSION['error'] = 'รหัสผ่านผิด';
+                            $_SESSION['error'] = 'wrong password';
                             header("location: signin.php");
                         }
                     } else {
-                        $_SESSION['error'] = 'อีเมลผิด';
+                        $_SESSION['error'] = 'wrong email';
                         header("location: signin.php");
                     }
                 } else {
-                    $_SESSION['error'] = "ไม่มีข้อมูลในระบบ";
+                    $_SESSION['error'] = "There is no information in the system.";
                     header("location: signin.php");
                 }
 
