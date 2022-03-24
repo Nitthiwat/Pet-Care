@@ -19,10 +19,23 @@ include("conn.php");
     $total_qty = $_SESSION['Product_Qty'];
     $total = $_SESSION['Product_totalprice'];
     $user_id = $_SESSION['user_login'];
+    $od_img = $_POST['slip'];
+
+
+    $file = $_FILES['slip'];
+    $filename = $_FILES["slip"]["name"];
+    $filTmpename = $_FILES["slip"]["tmp_name"];
+    $fileExt = explode(".", $filename);
+    $fileAcExt = strtolower(end($fileExt));
+    $newFilename = time() . "." . $fileAcExt;
+    $fileDes = 'order/' . $newFilename;
+    move_uploaded_file($filTmpename, $fileDes);
+    $sliplocation = $fileDes;
+
     $dttm = Date("Y-m-d G:i:s");
     //บันทึกการสั่งซื้อลงใน order_detail
     mysqli_query($conn, "BEGIN");
-    $sql1    = "insert into order_head values(null, '$dttm', '$name', '$address', '$phone', '$total_qty', '$total', '1','$user_id')";
+    $sql1    = "insert into order_head values(null, '$dttm', '$name', '$address', '$phone', '$total_qty', '$total', '1','$sliplocation','$user_id')";
     $query1    = mysqli_query($conn, $sql1);
     //ฟังก์ชั่น MAX() จะคืนค่าที่มากที่สุดในคอลัมน์ที่ระบุ ออกมา หรือจะพูดง่ายๆก็ว่า ใช้สำหรับหาค่าที่มากที่สุด นั่นเอง.
     $sql2 = "select max(Order_id) as Order_id from order_head where Order_name='$name' and Order_date='$dttm' ";
@@ -42,14 +55,14 @@ include("conn.php");
 
     if ($query1 && $query4) {
         mysqli_query($conn, "COMMIT");
-        $msg = "บันทึกข้อมูลเรียบร้อยแล้ว ";
+        $msg = "สั่งสินค้าเรียบร้อยแล้ว ";
         foreach ($_SESSION['cart'] as $Product_id) {
             unset($_SESSION['cart'][$Product_id]);
             unset($_SESSION['cart']);
         }
     } else {
         mysqli_query($conn, "ROLLBACK");
-        $msg = "บันทึกข้อมูลไม่สำเร็จ กรุณาติดต่อเจ้าหน้าที่ค่ะ ";
+        $msg = "ไม่สามารถสั่งสินค้าได้";
     }
     ?>
     <script type="text/javascript">

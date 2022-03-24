@@ -7,7 +7,6 @@
     $Product_qty = $_POST["Product_Qty"];
     $pd = $_POST["PType_id"];
     $pt = $_POST["PetType_id"];
-    echo $pt;
 
     $file = $_FILES['Product_img'];
     $filename = $_FILES["Product_img"]["name"];

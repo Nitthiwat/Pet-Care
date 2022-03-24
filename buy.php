@@ -27,7 +27,7 @@
                 <div class="row my-2 py-5 d-flex justify-content-center" style="background-color: #502064;margin:0 7rem">
                     <div class="col-md-6 order-first order-md-first d-flex align-items-center justify-content-center">
                         <div class="img mx-100" style="width: 400px;">
-                            <img src="<?php echo $row['Product_img']; ?>" alt="" class="img-fluid">
+                            <img src="<?php echo $row['Product_img']; ?>" alt="" class="img-fluid w-100">
                         </div>
                     </div>
                     <div class="col-md-5 px-2 content d-flex flex-column justify-content-center order-last order-md-last" style="color: white;">
@@ -35,11 +35,11 @@
                         <p class="opacity-75"><?php echo $row['Product_detail']; ?></p>
                         <div class="d-flex justify-content-between align-items-center">
                             <h5>ราคา: <?php echo $row['Product_price']; ?> บาท</h5>
-                            <form action="order.php" method="post" class="d-flex">
+                            <form action="cart.php?Product_id=<?php echo $_SESSION['Product_id'] ?>&act=add" method="post" class="d-flex">
                                 <input type="number" class="form-control mx-1" name="quantity" value="1" min="1" style="width: 80px;">
                                 <button type="submit" class="btn btn-primary mx-1">ซื้อสินค้า</button>
                             </form>
-                            <a href="cart.php?Product_id=<?php echo $_SESSION['Product_id'] ?>&act=add" data-toggle="modal" class="btn btn-primary" type="summit">ตะกร้าสินค้า</a></span>
+                            
                         </div>
                     </div>
                 </div>

@@ -58,9 +58,9 @@
                                     }
                                 ?>
                             </td>
-                            <td></td>
+                            <td><img src="<?php echo $row['Order_img']; ?>" alt=""></td>
                             <td>
-                                <a href="#confirm<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                                <a href="#confirm<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span> Confirm</a>
                                 <?php include('orderaction.php'); ?>
                             </td>
                         </tr>
