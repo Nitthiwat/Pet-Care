@@ -100,7 +100,7 @@
                     <td></td>
                 </tr>
             <?php
-                $_SESSION['Product_Qty'] = $qty;
+                $_SESSION['Product_Qty'] = $quantity;
                 $_SESSION['Product_totalprice'] = $total;
             }
             ?>

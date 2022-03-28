@@ -16,7 +16,7 @@
                 <td>ชื่อสินค้า</td>
                 <td>ราคา</td>
                 <td>จำนวน</td>
-                <td>รวม/รายการ</td>
+                <td>ราคารวม</td>
             </tr>
             <?php
             include('conn.php');
@@ -28,20 +28,18 @@
                 $query2    = mysqli_query($conn, $sql2);
                 $row    = mysqli_fetch_array($query);
                 $urow    = mysqli_fetch_array($query2);
-                $sum    = $row['Product_price'] * $qty;
-                $total    += $sum;
             }
             ?>
             <tr style="text-align: center;">
                 <td width='220'><img src="<?php echo $row["Product_img"] ?>" alt="" style="width: 200px;"></td>
                 <td width='334'><?php echo $row["Product_name"] ?></td>
                 <td width='46'><?php echo $row["Product_price"] ?> บาท</td>
-                <td width='57'> <?php echo $qty ?> </td>
-                <td width='93'><?php echo $sum; ?></td>
+                <td width='57'> <?php echo $_SESSION['Product_Qty'] ?> </td>
+                <td width='93'><?php echo $_SESSION['Product_totalprice']; ?></td>
             </tr>
             <tr style="background-color: #F9D5E3;height:50px">
                 <td colspan='3' style="text-align: center;"><b>ราคารวม</b></td>
-                <td style="text-align: right;"><b><?php echo $total; ?></b> บาท</td>
+                <td style="text-align: right;"><b><?php echo $_SESSION['Product_totalprice']; ?></b> บาท</td>
                 <td></td>
             </tr>
         </table>
