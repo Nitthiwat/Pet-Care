@@ -41,7 +41,7 @@
                         <td><?php echo $row['Order_id']; ?></td>
                         <td><?php echo $row['Product_name']; ?></td>
                         <td><?php echo $row['detail_qty']; ?></td>
-                        <td><?php echo $row['detail_sumprice']; ?></td>
+                        <td><?php echo $row['detail_sumprice']; ?> บาท</td>
                         <td><?php echo $row['Order_date']; ?></td>
                         <td><?php echo $row['Order_address']; ?></td>
                         <td>
@@ -59,7 +59,7 @@
                             }
                             ?>
                         </td>
-                        <td><img src="<?php echo $row['Order_img']; ?>" alt=""></td>
+                        <td><a href="<?php echo $row['Order_img']; ?>"><img src="<?php echo $row['Order_img']; ?>" alt="" style="width:200px"></a></td>
                         </tr>
                     <?php
                     }

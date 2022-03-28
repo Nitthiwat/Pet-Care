@@ -9,18 +9,14 @@
 <body>
     <?php include('usermenu.php'); ?>
     <br>
-    <form id="frmcart" name="frmcart" method="post" action="saveorder.php">
-        <table width="600" border="0" align="center" class="square">
-            <tr>
-                <td width="1558" colspan="4" bgcolor="#FFDDBB">
-                    <strong>สั่งซื้อสินค้า</strong>
-                </td>
-            </tr>
-            <tr>
-                <td bgcolor="#F9D5E3">สินค้า</td>
-                <td align="center" bgcolor="#F9D5E3">ราคา</td>
-                <td align="center" bgcolor="#F9D5E3">จำนวน</td>
-                <td align="center" bgcolor="#F9D5E3">รวม/รายการ</td>
+    <form id="frmcart" name="frmcart" method="post" action="saveorder.php" enctype="multipart/form-data">
+        <table width="70%" border="0" align="center" class="square">
+            <tr style="background-color: #F9D5E3;text-align:center">
+                <td>สินค้า</td>
+                <td>ชื่อสินค้า</td>
+                <td>ราคา</td>
+                <td>จำนวน</td>
+                <td>รวม/รายการ</td>
             </tr>
             <?php
             include('conn.php');
@@ -34,39 +30,39 @@
                 $urow    = mysqli_fetch_array($query2);
                 $sum    = $row['Product_price'] * $qty;
                 $total    += $sum;
-                echo "<tr>";
-                echo "<td>" . $row["Product_name"] . "</td>";
-                echo "<td align='right'>" . number_format($row['Product_price'], 2) . "</td>";
-                echo "<td align='right'>$qty</td>";
-                echo "<td align='right'>" . number_format($sum, 2) . "</td>";
-                echo "</tr>";
             }
-            echo "<tr>";
-            echo "<td  align='right' colspan='3' bgcolor='#F9D5E3'><b>รวม</b></td>";
-            echo "<td align='right' bgcolor='#F9D5E3'>" . "<b>" . number_format($total, 2) . "</b>" . "</td>";
-            echo "</tr>";
-
-
             ?>
+            <tr style="text-align: center;">
+                <td width='220'><img src="<?php echo $row["Product_img"] ?>" alt="" style="width: 200px;"></td>
+                <td width='334'><?php echo $row["Product_name"] ?></td>
+                <td width='46'><?php echo $row["Product_price"] ?> บาท</td>
+                <td width='57'> <?php echo $qty ?> </td>
+                <td width='93'><?php echo $sum; ?></td>
+            </tr>
+            <tr style="background-color: #F9D5E3;height:50px">
+                <td colspan='3' style="text-align: center;"><b>ราคารวม</b></td>
+                <td style="text-align: right;"><b><?php echo $total; ?></b> บาท</td>
+                <td></td>
+            </tr>
         </table>
         <p>
-        <table border="0" cellspacing="0" align="center">
+        <table border="0" cellspacing="0" align="center" width="50%">
             <tr>
                 <td colspan="2" bgcolor="#CCCCCC">รายละเอียดในการติดต่อ</td>
             </tr>
             <tr>
                 <td bgcolor="#EEEEEE">ชื่อ</td>
-                <td><input name="name" type="text" id="name" value="<?php echo $urow['User_fname'].' '.$urow['User_lname']?>" required ></td>
+                <td><input name="name" type="text" id="name" value="<?php echo $urow['User_fname'] . ' ' . $urow['User_lname'] ?>" required></td>
             </tr>
             <tr>
                 <td width="22%" bgcolor="#EEEEEE">ที่อยู่</td>
                 <td width="78%">
-                    <textarea name="address" cols="35" rows="5" id="address" required><?php echo $urow['User_address'];?></textarea>
+                    <textarea name="address" cols="35" rows="5" id="address" required><?php echo $urow['User_address']; ?></textarea>
                 </td>
             </tr>
             <tr>
                 <td bgcolor="#EEEEEE">เบอร์ติดต่อ</td>
-                <td><input name="phone" type="text" id="phone" value="<?php echo $urow['User_phone'];?>" required /></td>
+                <td><input name="phone" type="text" id="phone" value="<?php echo $urow['User_phone']; ?>" required /></td>
             </tr>
             <tr>
                 <td bgcolor="#EEEEEE">สลิปการโอนเงิน</td>

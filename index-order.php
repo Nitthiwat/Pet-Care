@@ -38,7 +38,7 @@
                 <tbody>
                     <?php
                     include('conn.php');
-                    $sql = "select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where Order_status='1'";
+                    $sql = "select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where Order_status='1' order by Order_date DESC";
                     $query = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_array($query)) {
                     ?>
@@ -64,7 +64,7 @@
                             }
                             ?>
                         </td>
-                        <td><img src="<?php echo $row['Order_img']; ?>" alt=""></td>
+                        <td><a href="<?php echo $row['Order_img']; ?>"><img src="<?php echo $row['Order_img']; ?>" alt="" style="width: 200px;"></a></td>
                         <td>
                             <a href="#confirm<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span> Confirm</a>
                             <?php include('orderaction.php'); ?>

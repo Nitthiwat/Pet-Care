@@ -30,15 +30,14 @@
                     <th>จำนวน</th>
                     <th>ราคารวม</th>
                     <th>วันที่สั่งซื้อสินค้า</th>
-                    <th style="width: 300px;">ที่อยู่การจัดส่ง</th>
+                    <th style="width: 250px;">ที่อยู่การจัดส่ง</th>
                     <th>สถานะ</th>
-                    <th>รูปสลิปการโอนเงิน</th>
                     <th>Action</th>
                 </thead>
                 <tbody>
                     <?php
                     include('conn.php');
-                    $sql = "select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where User_id='$user_id'";
+                    $sql = "select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where User_id='$user_id' order by Order_date DESC";
                     $query = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_array($query)) {
                     ?>
@@ -46,14 +45,14 @@
                         <td><?php echo $row['Order_id']; ?></td>
                         <td><?php echo $row['Product_name']; ?></td>
                         <td><?php echo $row['detail_qty']; ?></td>
-                        <td><?php echo $row['detail_sumprice']; ?></td>
+                        <td><?php echo $row['detail_sumprice']; ?> บาท</td>
                         <td><?php echo $row['Order_date']; ?></td>
                         <td><?php echo $row['Order_address']; ?></td>
                         <td>
                             <?php $status = $row['Order_status'];
                             switch ($status) {
                                 case "1":
-                                    echo "รอการชำระเงิน";
+                                    echo "รอยืนยันการชำระ";
                                     break;
                                 case "2":
                                     echo "ชำระเงินแล้ว";
@@ -64,7 +63,6 @@
                             }
                             ?>
                         </td>
-                        <td><img src="<?php echo $row['Order_img']; ?>" alt=""></td>
                         <td>
                             <a href="#cancle<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> ยกเลิก</a>
                             <?php include('orderaction.php'); ?>
