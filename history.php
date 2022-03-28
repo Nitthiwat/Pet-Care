@@ -10,16 +10,16 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>การสั่งซื้อสินค้า</title>
+    <title>ประวัติการสั่งซื้อสินค้า</title>
 
 </head>
 
 <body>
-    <?php include('adminmenu.php'); ?>
+    <?php include('usermenu.php'); ?>
     <div class="container my-5">
         <div class="well">
             <span class="my-5" style="font-size:25px; color:blue">
-                <center><strong>รายละเอียดการสั่งซื้อสินค้า</strong></center>
+                <center><strong>ประวัติการสั่งซื้อสินค้า</strong></center>
             </span>
             <!-- <span class="pull-left"><a href="#addnew" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New</a></span> -->
             <!-- <a href="add.php">Add product</a> -->
@@ -38,7 +38,7 @@
                 <tbody>
                     <?php
                     include('conn.php');
-                    $sql = "select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where Order_status='1'";
+                    $sql = "select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where User_id='$user_id'";
                     $query = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_array($query)) {
                     ?>
@@ -66,7 +66,7 @@
                         </td>
                         <td><img src="<?php echo $row['Order_img']; ?>" alt=""></td>
                         <td>
-                            <a href="#confirm<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span> Confirm</a>
+                            <a href="#cancle<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> ยกเลิก</a>
                             <?php include('orderaction.php'); ?>
                         </td>
                         </tr>
