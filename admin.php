@@ -73,7 +73,7 @@
                         <td><?php echo $row['Order_id']; ?></td>
                         <td><?php echo $row['Product_name']; ?></td>
                         <td><?php echo $row['detail_qty']; ?></td>
-                        <td><?php echo $row['detail_sumprice']; ?> บาท</td>
+                        <td><?php echo $row['Product_price']*$row['detail_qty']; ?> บาท</td>
                         <td><?php echo $row['Order_date']; ?></td>
                         <td><?php echo $row['Order_address']; ?></td>
                         <td>

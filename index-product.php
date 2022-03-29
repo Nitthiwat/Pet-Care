@@ -77,9 +77,9 @@
                         <tr>
                             <td><?php echo $row['Product_id']; ?></td>
                             <td><?php echo $row['Product_name']; ?></td>
-                            <td><?php echo $row['Product_price']; ?></td>
+                            <td class="text-center"><?php echo $row['Product_price']; ?></td>
                             <td><?php echo $row['Product_detail']; ?></td>
-                            <td><?php echo $row['Product_Qty']; ?></td>
+                            <td class="text-center"><?php echo $row['Product_Qty']; ?></td>
                             <td><a href="<?php echo $row['Product_img']; ?>"><img src="<?php echo $row['Product_img']; ?>" alt="" style="width: 150px;"></a></td>
                             <td><?php echo $row['PType_name']; ?></td>
                             <td><?php echo $row['PetType_name']; ?></td>

@@ -47,7 +47,7 @@ include("conn.php");
         $row3    = mysqli_fetch_array($query3);
         $total    = $row3['Product_price'] * $qty;
 
-        $sql4    = "insert into order_detail values('$Order_id', '$Product_id', '$total_qty', '$total')";
+        $sql4    = "insert into order_detail values('$Order_id', '$Product_id', '$total_qty')";
         $query4    = mysqli_query($conn, $sql4);
     }
 
