@@ -27,7 +27,7 @@
                     <!-- d-none d-sm-block คือซ่อนเมื่ออยู่หน้าจอโทรศัพท์ -->
                     <label class="col-2 col-sm-1 col-form-label d-none d-sm-block">ค้นหาสินค้า</label>
                     <div class="col-7 col-sm-5">
-                        <input type="text" name="q" required class="form-control" placeholder="ระบุชื่อสินค้าที่ต้องการค้นหา" value="<?php if (isset($_GET['q'])) {
+                        <input type="text" name="q" required class="form-control" placeholder="ระบุสินค้าที่ต้องการค้นหา" value="<?php if (isset($_GET['q'])) {
                                                                                                                                             echo $_GET['q'];
                                                                                                                                         } ?>">
                     </div>

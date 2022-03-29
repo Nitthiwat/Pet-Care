@@ -37,7 +37,7 @@
                 <tbody>
                     <?php
                     include('conn.php');
-                    $sql = "select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where User_id='$user_id' order by Order_date DESC";
+                    $sql = "select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where User_id='$user_id' && Order_status!='3' order by Order_status DESC";
                     $query = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_array($query)) {
                     ?>

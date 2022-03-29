@@ -44,15 +44,48 @@
                 </li>
             </ul>
         </nav>
+        <form action="shopping.php" method="get" class="my-2 mx-5">
+            <div class="mb-3 row">
+                <!-- d-none d-sm-block คือซ่อนเมื่ออยู่หน้าจอโทรศัพท์ -->
+                <label class="col-2 col-sm-1 col-form-label d-none d-sm-block">ค้นหาสินค้า</label>
+                <div class="col-7 col-sm-5">
+                    <input type="text" name="q" required class="form-control" placeholder="ระบุสินค้าที่ต้องการค้นหา" value="<?php if (isset($_GET['q'])) {
+                                                                                                                                    echo $_GET['q'];
+                                                                                                                                } ?>">
+                </div>
+                <div class="col-2 col-sm-1">
+                    <button type="submit" class="btn btn-primary">ค้นหา</button>
+                </div>
+            </div>
+        </form>
+        <?php
+            //แสดงข้อความที่ค้นหา
+            //สร้างเงื่อนไขตรวจสอบถ้ามีการค้นหาให้แสดงเฉพาะรายการค้นหา
+            if (isset($_GET['q']) && $_GET['q'] != '') {
+
+                //ประกาศตัวแปรรับค่าจากฟอร์ม
+                $q = "%{$_GET['q']}%";
+
+                //คิวรี่ข้อมูลมาแสดงจากการค้นหา
+                $stmt = $conn->prepare("select * from product WHERE Product_name LIKE ?");
+                $stmt->execute([$q]);
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+            }else{
+                //    คิวรี่ข้อมูลมาแสดงตามปกติ *แสดงทั้งหมด
+                  $stmt = $conn->prepare("select * from product");
+                  $stmt->execute();
+                  $result = $stmt->fetchAll();
+                }
+            ?>
         <div data-bs-spy="scroll" data-bs-target="#navbar-shop" data-bs-offset="0" class="scrollspy-example px-5" tabindex="0">
             <div class="my-4">
                 <h5 id="scrollspyDog">หมวดหมู่สุนัข</h5>
                 <div class="item-more row row-cols-1 row-cols-md-4 g-3 mx-3">
                     <?php
                     include('conn.php');
-                    $query = mysqli_query($conn, "select * from product where PetType_id ='PT001'");
-                    while ($row = mysqli_fetch_array($query)) {
-                        if ($row['Product_Qty'] > 0) {
+                    foreach($result as $row) {
+                        if ($row['Product_Qty'] > 0 && $row['PetType_id'] == 'PT001') {
                     ?>
                             <div class="col" style="height:auto;">
                                 <div class="card h-100">
@@ -75,9 +108,8 @@
                 <div class="item-more row row-cols-1 row-cols-md-4 g-3 mx-3">
                     <?php
                     include('conn.php');
-                    $query = mysqli_query($conn, "select * from product where PetType_id ='PT002'");
-                    while ($row = mysqli_fetch_array($query)) {
-                        if ($row['Product_Qty'] > 0) {
+                    foreach($result as $row) {
+                        if ($row['Product_Qty'] > 0 && $row['PetType_id'] == 'PT002') {
                     ?>
                             <div class="col" style="height:auto;">
                                 <div class="card h-100">
@@ -100,9 +132,8 @@
                 <div class="item-more row row-cols-1 row-cols-md-4 g-3 mx-3">
                     <?php
                     include('conn.php');
-                    $query = mysqli_query($conn, "select * from product where PetType_id ='PT003'");
-                    while ($row = mysqli_fetch_array($query)) {
-                        if ($row['Product_Qty'] > 0) {
+                    foreach($result as $row) {
+                        if ($row['Product_Qty'] > 0 && $row['PetType_id'] == 'PT003') {
                     ?>
                             <div class="col" style="height:auto;">
                                 <div class="card h-100">
@@ -125,9 +156,8 @@
                 <div class="item-more row row-cols-1 row-cols-md-4 g-3 mx-3">
                     <?php
                     include('conn.php');
-                    $query = mysqli_query($conn, "select * from product where PetType_id ='PT004'");
-                    while ($row = mysqli_fetch_array($query)) {
-                        if ($row['Product_Qty'] > 0) {
+                    foreach($result as $row) {
+                        if ($row['Product_Qty'] > 0 && $row['PetType_id'] == 'PT004') {
                     ?>
                             <div class="col" style="height:auto;">
                                 <div class="card h-100">
