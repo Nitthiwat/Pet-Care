@@ -20,8 +20,25 @@
     <div class="container my-5">
         <div class="well">
             <span class="my-5" style="font-size:25px; color:blue">
-                <center><strong>เพิ่มข้อมูลสินค้า</strong></center>
+                <center><strong>ข้อมูลสินค้า</strong></center>
             </span>
+            <form action="index-product.php" method="get" class="my-5">
+                <div class="mb-3 row">
+                    <!-- d-none d-sm-block คือซ่อนเมื่ออยู่หน้าจอโทรศัพท์ -->
+                    <label class="col-2 col-sm-1 col-form-label d-none d-sm-block">ค้นหาสินค้า</label>
+                    <div class="col-7 col-sm-5">
+                        <input type="text" name="q" required class="form-control" placeholder="ระบุชื่อสินค้าที่ต้องการค้นหา" value="<?php if (isset($_GET['q'])) {
+                                                                                                                                            echo $_GET['q'];
+                                                                                                                                        } ?>">
+                    </div>
+                    <div class="col-2 col-sm-1">
+                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                    </div>
+                    <!-- <div class="col-2 col-sm-1">   
+                <a  href="showProductAndSearch.php" class="btn btn-warning">Reset</a>
+              </div> -->
+                </div>
+            </form>
             <span class="pull-left"><a href="#addnew" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New</a></span>
             <!-- <a href="add.php">Add product</a> -->
             <table class="table table-striped table-bordered table-hover">
@@ -64,7 +81,7 @@
                 </tbody>
             </table>
         </div>
-        <?php include('add.php'); ?>  
+        <?php include('add.php'); ?>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
