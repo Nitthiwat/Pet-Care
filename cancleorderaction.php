@@ -1,4 +1,4 @@
-<div class="modal fade" id="cancle<?php echo $row['Order_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="cancleadmin<?php echo $row['Order_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,7 +16,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                <a href="cancleorderadmin.php?Order_id=<?php echo $row['Order_id']; ?>" class="btn btn-success"><span class="glyphicon glyphicon-trash"></span> Confirm</a>
+                <a href="cancleorderadmin.php?Order_id=<?php echo $row['Order_id']; ?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Confirm</a>
             </div>
         </div>
     </div>

@@ -68,7 +68,7 @@
                         <td>
                             <a href="#confirm<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span> Confirm</a>
                             <?php include('orderaction.php'); ?>
-                            <a href="#cancle<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Cancle</a>
+                            <a href="#cancleadmin<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Cancle</a>
                             <?php include('cancleorderaction.php'); ?>
                         </td>
                         </tr>
