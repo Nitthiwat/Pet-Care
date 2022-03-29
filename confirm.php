@@ -9,7 +9,7 @@
 <body>
     <?php include('usermenu.php'); ?>
     <br>
-    <form id="frmcart" name="frmcart" method="post" action="saveorder.php" enctype="multipart/form-data">
+    <form id="frmcart" name="frmcart" method="post" action="saveorder.php" enctype="multipart/form-data" class="my-5">
         <table width="70%" border="0" align="center" class="square">
             <tr style="background-color: #F9D5E3;text-align:center">
                 <td>สินค้า</td>
@@ -44,34 +44,41 @@
             </tr>
         </table>
         <p>
-        <table border="0" cellspacing="0" align="center" width="50%">
-            <tr>
-                <td colspan="2" bgcolor="#CCCCCC">รายละเอียดในการติดต่อ</td>
-            </tr>
-            <tr>
-                <td bgcolor="#EEEEEE">ชื่อ</td>
-                <td><input name="name" type="text" id="name" value="<?php echo $urow['User_fname'] . ' ' . $urow['User_lname'] ?>" required></td>
-            </tr>
-            <tr>
-                <td width="22%" bgcolor="#EEEEEE">ที่อยู่</td>
-                <td width="78%">
-                    <textarea name="address" cols="35" rows="5" id="address" required><?php echo $urow['User_address']; ?></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td bgcolor="#EEEEEE">เบอร์ติดต่อ</td>
-                <td><input name="phone" type="text" id="phone" value="<?php echo $urow['User_phone']; ?>" required /></td>
-            </tr>
-            <tr>
-                <td bgcolor="#EEEEEE">สลิปการโอนเงิน</td>
-                <td><input type="file" name="slip"></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center" bgcolor="#CCCCCC">
-                    <input type="submit" name="Submit2" value="สั่งซื้อ" />
-                </td>
-            </tr>
-        </table>
+        <div class="d-flex flex-row justify-content-center">
+            <div>
+                <table border="0" cellspacing="0" align="center">
+                    <tr>
+                        <td colspan="2" bgcolor="#CCCCCC">รายละเอียดในการติดต่อ</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#EEEEEE">ชื่อ</td>
+                        <td><input name="name" type="text" id="name" value="<?php echo $urow['User_fname'] . ' ' . $urow['User_lname'] ?>" required></td>
+                    </tr>
+                    <tr>
+                        <td width="22%" bgcolor="#EEEEEE">ที่อยู่</td>
+                        <td width="78%">
+                            <textarea name="address" cols="35" rows="5" id="address" required><?php echo $urow['User_address']; ?></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#EEEEEE">เบอร์ติดต่อ</td>
+                        <td><input name="phone" type="text" id="phone" value="<?php echo $urow['User_phone']; ?>" required /></td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#EEEEEE">สลิปการโอนเงิน</td>
+                        <td><input type="file" name="slip"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center" bgcolor="#CCCCCC">
+                            <input type="submit" name="Submit2" value="สั่งซื้อ" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <img src="img/640px-Qr-sco-m-wikipedia.svg.png" alt="" width="200px">
+            </div>
+        </div>
     </form>
 </body>
 

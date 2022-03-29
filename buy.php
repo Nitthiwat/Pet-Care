@@ -21,7 +21,10 @@
 
             $id = $_GET['Product_id'];
             $_SESSION['Product_id'] = $id;
+
             $query = mysqli_query($conn, "select * from product where Product_id='" . $id . "'");
+            $query1 = mysqli_query($conn, "select Product_Qty from product where Product_id='" . $id . "'");
+            $row1    = mysqli_fetch_array($query1);
             while ($row = mysqli_fetch_array($query)) {
             ?>
                 <div class="row my-2 py-5 d-flex justify-content-center" style="background-color: #502064;margin:0 7rem">
@@ -36,10 +39,10 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <h5>ราคา: <?php echo $row['Product_price']; ?> บาท</h5>
                             <form action="cart.php?Product_id=<?php echo $_SESSION['Product_id'] ?>&act=add" method="post" class="d-flex">
-                                <input type="number" class="form-control mx-1" name="quantity" value="1" min="1" style="width: 80px;">
-                                <button type="submit" class="btn btn-primary mx-1">ซื้อสินค้า</button>
+                                <input type="number" class="form-control mx-1" name="quantity" value="1" min="1" max="<?php echo $row1['Product_Qty']; ?>" style="width: 80px;">
+                                <button type="submit" class="btn btn-primary mx-1">ซื้อสินค้า</button> 
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>

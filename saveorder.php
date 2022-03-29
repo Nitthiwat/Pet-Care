@@ -51,15 +51,13 @@ include("conn.php");
         $query4    = mysqli_query($conn, $sql4);
     }
 
-    // foreach ($_SESSION['cart'] as $Product_id => $qty) {
-    //     $sql5    = "select * from product where Product_id='$Product_id'";
-    //     $query5    = mysqli_query($conn, $sql5);
-    //     $row3    = mysqli_fetch_array($query3);
-    //     $total    = $row3['Product_price'] * $qty;
+    $sql5 = "select Product_Qty from product where Product_id='$Product_id'";
+    $query5    = mysqli_query($conn, $sql5);
+    $row5    = mysqli_fetch_array($query5);
+    $cut_stock = $row5['Product_Qty']-$total_qty;
 
-    //     $sql4    = "insert into order_detail values('$Order_id', '$Product_id', '$total_qty', '$total')";
-    //     $query4    = mysqli_query($conn, $sql4);
-    // }
+    $sql6 = "update product set Product_Qty = '$cut_stock' where Product_id='$Product_id'";
+    $query6 = mysqli_query($conn, $sql6);
 
 
     if ($query1 && $query4) {
