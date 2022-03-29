@@ -36,6 +36,26 @@
                     </div>
                 </div>
             </form>
+            <?php
+            //แสดงข้อความที่ค้นหา
+            //สร้างเงื่อนไขตรวจสอบถ้ามีการค้นหาให้แสดงเฉพาะรายการค้นหา
+            if (isset($_GET['q']) && $_GET['q'] != '') {
+
+                //ประกาศตัวแปรรับค่าจากฟอร์ม
+                $q = "%{$_GET['q']}%";
+
+                //คิวรี่ข้อมูลมาแสดงจากการค้นหา
+                $stmt = $conn->prepare("select * from product join producttype on(product.PType_id = producttype.PType_id) join pettype on(product.PetType_id = pettype.PetType_id) WHERE Product_name LIKE ?");
+                $stmt->execute([$q]);
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+            }else{
+                //    คิวรี่ข้อมูลมาแสดงตามปกติ *แสดงทั้งหมด
+                  $stmt = $conn->prepare("select * from product join producttype on(product.PType_id = producttype.PType_id) join pettype on(product.PetType_id = pettype.PetType_id)");
+                  $stmt->execute();
+                  $result = $stmt->fetchAll();
+                }
+            ?>
             <span class="pull-left"><a href="#addnew" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New</a></span>
             <table class="table table-striped table-bordered table-hover">
                 <thead>
@@ -52,9 +72,7 @@
                 <tbody>
                     <?php
                     include('conn.php');
-                    $sql = "select * from product join producttype on(product.PType_id = producttype.PType_id) join pettype on(product.PetType_id = pettype.PetType_id)";
-                    $query = mysqli_query($conn, $sql);
-                    while ($row = mysqli_fetch_array($query)) {
+                    foreach($result as $row) {
                     ?>
                         <tr>
                             <td><?php echo $row['Product_id']; ?></td>
