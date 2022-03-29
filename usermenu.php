@@ -70,6 +70,9 @@
         <li class="nav-item">
             <a class="nav-link text-light" href="shopping.php">Product</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" href="history.php">History</a>
+        </li>
     </ul>
 </body>
 

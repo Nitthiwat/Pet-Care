@@ -20,10 +20,43 @@
     <div class="container my-5">
         <div class="well">
             <span class="my-5" style="font-size:25px; color:blue">
-                <center><strong>เพิ่มข้อมูลสินค้า</strong></center>
+                <center><strong>รายละเอียดข้อมูลสินค้า</strong></center>
             </span>
+            <form action="index-product.php" method="get" class="my-2">
+                <div class="mb-3 row">
+                    <!-- d-none d-sm-block คือซ่อนเมื่ออยู่หน้าจอโทรศัพท์ -->
+                    <label class="col-2 col-sm-1 col-form-label d-none d-sm-block">ค้นหาสินค้า</label>
+                    <div class="col-7 col-sm-5">
+                        <input type="text" name="q" required class="form-control" placeholder="ระบุสินค้าที่ต้องการค้นหา" value="<?php if (isset($_GET['q'])) {
+                                                                                                                                            echo $_GET['q'];
+                                                                                                                                        } ?>">
+                    </div>
+                    <div class="col-2 col-sm-1">
+                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                    </div>
+                </div>
+            </form>
+            <?php
+            //แสดงข้อความที่ค้นหา
+            //สร้างเงื่อนไขตรวจสอบถ้ามีการค้นหาให้แสดงเฉพาะรายการค้นหา
+            if (isset($_GET['q']) && $_GET['q'] != '') {
+
+                //ประกาศตัวแปรรับค่าจากฟอร์ม
+                $q = "%{$_GET['q']}%";
+
+                //คิวรี่ข้อมูลมาแสดงจากการค้นหา
+                $stmt = $conn->prepare("select * from product join producttype on(product.PType_id = producttype.PType_id) join pettype on(product.PetType_id = pettype.PetType_id) WHERE Product_name LIKE ?");
+                $stmt->execute([$q]);
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+            }else{
+                //    คิวรี่ข้อมูลมาแสดงตามปกติ *แสดงทั้งหมด
+                  $stmt = $conn->prepare("select * from product join producttype on(product.PType_id = producttype.PType_id) join pettype on(product.PetType_id = pettype.PetType_id)");
+                  $stmt->execute();
+                  $result = $stmt->fetchAll();
+                }
+            ?>
             <span class="pull-left"><a href="#addnew" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New</a></span>
-            <!-- <a href="add.php">Add product</a> -->
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <th>รหัสสินค้า</th>
@@ -39,9 +72,7 @@
                 <tbody>
                     <?php
                     include('conn.php');
-                    $sql = "select * from product join producttype on(product.PType_id = producttype.PType_id) join pettype on(product.PetType_id = pettype.PetType_id)";
-                    $query = mysqli_query($conn, $sql);
-                    while ($row = mysqli_fetch_array($query)) {
+                    foreach($result as $row) {
                     ?>
                         <tr>
                             <td><?php echo $row['Product_id']; ?></td>
@@ -49,7 +80,7 @@
                             <td><?php echo $row['Product_price']; ?></td>
                             <td><?php echo $row['Product_detail']; ?></td>
                             <td><?php echo $row['Product_Qty']; ?></td>
-                            <td><?php echo $row['Product_img']; ?></td>
+                            <td><a href="<?php echo $row['Product_img']; ?>"><img src="<?php echo $row['Product_img']; ?>" alt="" style="width: 150px;"></a></td>
                             <td><?php echo $row['PType_name']; ?></td>
                             <td><?php echo $row['PetType_name']; ?></td>
                             <td>
@@ -63,8 +94,8 @@
                     ?>
                 </tbody>
             </table>
-        </div>1
-        <?php include('add.php'); ?>  
+        </div>
+        <?php include('add.php'); ?>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

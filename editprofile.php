@@ -1,54 +1,67 @@
-<?php 
-    require_once('connection.php');
+<?php
+require_once('connection.php');
 
-    if (isset($_REQUEST['update_id'])) {
+if (isset($_REQUEST['update_id'])) {
+    try {
+        $User_id = $_REQUEST['update_id'];
+        $select_stmt = $db->prepare("SELECT * FROM users WHERE User_id = :User_id");
+        $select_stmt->bindParam(':User_id', $User_id);
+        $select_stmt->execute();
+        $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+        extract($row);
+    } catch (PDOException $e) {
+        $e->getMessage();
+    }
+}
+
+if (isset($_REQUEST['btn_update'])) {
+    $User_fname_up = $_REQUEST['txt_User_fname'];
+    $User_lname_up = $_REQUEST['txt_User_lname'];
+    $User_email_up = $_REQUEST['txt_User_email'];
+    $User_birthday_up = $_REQUEST['txt_User_birthday'];
+    $User_phone_up = $_REQUEST['txt_User_phone'];
+    $User_address_up = $_REQUEST['txt_User_address'];
+
+    if (empty($User_fname_up)) {
+        $errorMsg = "Please Enter Fisrtname";
+    } else if (empty($User_lname_up)) {
+        $errorMsg = "Please Enter Lastname";
+    } else if (empty($User_email_up)) {
+        $errorMsg = "Please Enter Email";
+    } else if (empty($User_birthday_up)) {
+        $errorMsg = "Please Enter Your Birthday";
+    } else if (empty($User_phone_up)) {
+        $errorMsg = "Please Enter Phone Number";
+    } else if (empty($User_address_up)) {
+        $errorMsg = "Please Enter Your Address";
+    } else {
         try {
-            $User_id = $_REQUEST['update_id'];
-            $select_stmt = $db->prepare("SELECT * FROM users WHERE User_id = :User_id");
-            $select_stmt->bindParam(':User_id', $User_id);
-            $select_stmt->execute();
-            $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
-            extract($row);
-        } catch(PDOException $e) {
-            $e->getMessage();
-        }
-    }
+            if (!isset($errorMsg)) {
+                $update_stmt = $db->prepare("UPDATE users SET User_fname = :fname_up, User_lname = :lname_up, User_email = :email_up,User_birthday = :birthday_up,User_phone = :phone_up,User_address = :address_up WHERE User_id = :User_id");
+                $update_stmt->bindParam(':fname_up', $User_fname_up);
+                $update_stmt->bindParam(':lname_up', $User_lname_up);
+                $update_stmt->bindParam(':email_up', $User_email_up);
+                $update_stmt->bindParam(':birthday_up', $User_birthday_up);
+                $update_stmt->bindParam(':phone_up', $User_phone_up);
+                $update_stmt->bindParam(':address_up', $User_address_up);
+                $update_stmt->bindParam(':User_id', $User_id);
 
-    if (isset($_REQUEST['btn_update'])) {
-        $User_fname_up = $_REQUEST['txt_User_fname'];
-        $User_lname_up = $_REQUEST['txt_User_lname'];
-        $User_email_up = $_REQUEST['txt_User_email'];
-
-        if (empty($User_fname_up)) {
-            $errorMsg = "Please Enter Fisrtname";
-        } else if (empty($User_lname_up)) {
-            $errorMsg = "Please Enter Lastname";
-        }else if (empty($User_email_up)) {
-            $errorMsg = "Please Enter Lastname";
-        } else {
-            try {
-                if (!isset($errorMsg)) {
-                    $update_stmt = $db->prepare("UPDATE users SET User_fname = :fname_up, User_lname = :lname_up, User_email = :email_up WHERE User_id = :User_id");
-                    $update_stmt->bindParam(':fname_up', $User_fname_up);
-                    $update_stmt->bindParam(':lname_up', $User_lname_up);
-                    $update_stmt->bindParam(':email_up', $User_email_up);
-                    $update_stmt->bindParam(':User_id', $User_id);
-
-                    if ($update_stmt->execute()) {
-                        $updateMsg = "Record update successfully...";
-                        header("refresh:2;userprofile.php");
-                    }
+                if ($update_stmt->execute()) {
+                    $updateMsg = "Record update successfully...";
+                    header("refresh:2;userprofile.php");
                 }
-            } catch(PDOException $e) {
-                echo $e->getMessage();
             }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
         }
     }
+}
 
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,31 +69,32 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" />
     <link rel="stylesheet" href="bootstrap/bootstrap.css">
 </head>
+
 <body>
     <?php include('usermenu.php'); ?>
     <div class="container">
-    <h1 style="text-align: center; margin-top:2%;color:#502064;">Edit Profile</h1>
-    
+        <h1 style="text-align: center; margin-top:2%;color:#502064;">Edit Profile</h1>
 
-    <?php 
-         if (isset($errorMsg)) {
-    ?>
-        <div class="alert alert-danger">
-            <strong>Wrong! <?php echo $errorMsg; ?></strong>
-        </div>
-    <?php } ?>
-    
 
-    <?php 
-         if (isset($updateMsg)) {
-    ?>
-        <div class="alert alert-success">
-            <strong>Success! <?php echo $updateMsg; ?></strong>
-        </div>
-    <?php } ?>
+        <?php
+        if (isset($errorMsg)) {
+        ?>
+            <div class="alert alert-danger">
+                <strong>Wrong! <?php echo $errorMsg; ?></strong>
+            </div>
+        <?php } ?>
 
-    <form method="post" class="form-horizontal mt-5" style=" padding-left:25%;">
-            
+
+        <?php
+        if (isset($updateMsg)) {
+        ?>
+            <div class="alert alert-success">
+                <strong>Success! <?php echo $updateMsg; ?></strong>
+            </div>
+        <?php } ?>
+
+        <form method="post" class="form-horizontal mt-5" style=" padding-left:25%;">
+
             <div class="form-group ">
                 <div class="row">
                     <label for="User_fname" class="col-sm-1.5">Fisrtname</label>
@@ -129,22 +143,23 @@
                     </div>
                 </div>
             </div>
-           
-           
-            
-                <div  style="padding-top: 3%;padding-left:25%">
-                    <input type="submit" name="btn_update" style="background-color:#502064; color: white;" class="btn btn-success" value="Update">
-                    <a href="userprofile.php" class="btn btn-danger">Cancel</a>
-                </div>
-                </form>
-            
+
+
+
+            <div style="padding-top: 3%;padding-left:25%">
+                <input type="submit" name="btn_update" style="background-color:#502064; color: white;" class="btn btn-success" value="Update">
+                <a href="userprofile.php" class="btn btn-danger">Cancel</a>
+            </div>
+        </form>
+
     </div>
 
-            <?php include('footer.php'); ?>
-   
+    <?php include('footer.php'); ?>
+
 
     <script src="js/slim.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
 </body>
+
 </html>

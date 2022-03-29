@@ -19,18 +19,16 @@ include("conn.php");
     $total_qty = $_SESSION['Product_Qty'];
     $total = $_SESSION['Product_totalprice'];
     $user_id = $_SESSION['user_login'];
-    $od_img = $_POST['slip'];
-
 
     $file = $_FILES['slip'];
     $filename = $_FILES["slip"]["name"];
-    $filTmpename = $_FILES["slip"]["tmp_name"];
+    $filTmpname = $_FILES["slip"]["tmp_name"];
     $fileExt = explode(".", $filename);
     $fileAcExt = strtolower(end($fileExt));
     $newFilename = time() . "." . $fileAcExt;
-    $fileDes = 'order/' . $newFilename;
-    move_uploaded_file($filTmpename, $fileDes);
-    $sliplocation = $fileDes;
+    $filelocation = 'img/order/' . $filename;
+    move_uploaded_file($filTmpname, $filelocation);
+    $sliplocation = $filelocation;
 
     $dttm = Date("Y-m-d G:i:s");
     //บันทึกการสั่งซื้อลงใน order_detail
@@ -52,6 +50,15 @@ include("conn.php");
         $sql4    = "insert into order_detail values('$Order_id', '$Product_id', '$total_qty', '$total')";
         $query4    = mysqli_query($conn, $sql4);
     }
+
+    $sql5 = "select Product_Qty from product where Product_id='$Product_id'";
+    $query5    = mysqli_query($conn, $sql5);
+    $row5    = mysqli_fetch_array($query5);
+    $cut_stock = $row5['Product_Qty']-$total_qty;
+
+    $sql6 = "update product set Product_Qty = '$cut_stock' where Product_id='$Product_id'";
+    $query6 = mysqli_query($conn, $sql6);
+
 
     if ($query1 && $query4) {
         mysqli_query($conn, "COMMIT");
