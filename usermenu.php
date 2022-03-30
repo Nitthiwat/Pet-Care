@@ -36,7 +36,6 @@
                             <?php
                             session_start();
                             require_once 'config/db.php';
-
                             if (isset($_SESSION['user_login'])) {
                                 $user_id = $_SESSION['user_login'];
                                 $stmt = $conn->query("SELECT * FROM users WHERE User_id = $user_id");

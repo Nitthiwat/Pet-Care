@@ -25,13 +25,12 @@
                 $row = $check_data->fetch(PDO::FETCH_ASSOC);
 
                 if ($check_data->rowCount() > 0) {
-
                     if ($username == $row['username']) {
                         if (password_verify($password, $row['password'])) {
                             if ($row['urole'] == 'admin') {
                                 $_SESSION['admin_login'] = $row['User_id'];
                                 header("location: admin.php");
-                            } else {
+                            } else if($row['urole'] == 'user'){
                                 $_SESSION['user_login'] = $row['User_id'];
                                 header("location: user.php");
                             }

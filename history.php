@@ -21,6 +21,20 @@
             <span class="my-5" style="font-size:25px; color:blue">
                 <center><strong>ประวัติการสั่งซื้อสินค้า</strong></center>
             </span>
+            <form action="history.php" method="get" class="my-2">
+                <div class="mb-3 row">
+                    <!-- d-none d-sm-block คือซ่อนเมื่ออยู่หน้าจอโทรศัพท์ -->
+                    <label class="col-2 col-sm-1 col-form-label d-none d-sm-block">ค้นหาสินค้า</label>
+                    <div class="col-7 col-sm-5">
+                        <input type="text" name="q" required class="form-control" placeholder="ระบุสินค้าที่ต้องการค้นหา" value="<?php if (isset($_GET['q'])) {
+                                                                                                                                        echo $_GET['q'];
+                                                                                                                                    } ?>">
+                    </div>
+                    <div class="col-2 col-sm-1">
+                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                    </div>
+                </div>
+            </form>
             <!-- <span class="pull-left"><a href="#addnew" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New</a></span> -->
             <!-- <a href="add.php">Add product</a> -->
             <table class="table table-striped table-bordered table-hover">
@@ -36,16 +50,35 @@
                 </thead>
                 <tbody>
                     <?php
+                    //แสดงข้อความที่ค้นหา
+                    //สร้างเงื่อนไขตรวจสอบถ้ามีการค้นหาให้แสดงเฉพาะรายการค้นหา
+                    if (isset($_GET['q']) && $_GET['q'] != '') {
+
+                        //ประกาศตัวแปรรับค่าจากฟอร์ม
+                        $q = "%{$_GET['q']}%";
+
+                        //คิวรี่ข้อมูลมาแสดงจากการค้นหา
+                        $stmt = $conn->prepare("select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where User_id='$user_id' && Order_status!='3' && Product_name LIKE ? order by Order_date DESC");
+                        $stmt->execute([$q]);
+                        $stmt->execute();
+                        $result = $stmt->fetchAll();
+                    } else {
+                        //    คิวรี่ข้อมูลมาแสดงตามปกติ *แสดงทั้งหมด
+                        $stmt = $conn->prepare("select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where User_id='$user_id' && Order_status!='3' order by Order_status DESC");
+                        $stmt->execute();
+                        $result = $stmt->fetchAll();
+                    }
+                    ?>
+                    <?php
                     include('conn.php');
-                    $sql = "select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where User_id='$user_id' && Order_status!='3' order by Order_status DESC";
-                    $query = mysqli_query($conn, $sql);
-                    while ($row = mysqli_fetch_array($query)) {
+                    // $sql = "select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where User_id='$user_id' && Order_status!='3'  order by Order_status DESC";
+                    foreach ($result as $row) {
                     ?>
                         <tr></tr>
                         <td><?php echo $row['Order_id']; ?></td>
                         <td><?php echo $row['Product_name']; ?></td>
                         <td><?php echo $row['detail_qty']; ?></td>
-                        <td><?php echo $row['Product_price']*$row['detail_qty']; ?> บาท</td>
+                        <td><?php echo $row['Product_price'] * $row['detail_qty']; ?> บาท</td>
                         <td><?php echo $row['Order_date']; ?></td>
                         <td><?php echo $row['Order_address']; ?></td>
                         <td>
@@ -64,8 +97,10 @@
                             ?>
                         </td>
                         <td>
-                            <a href="#cancle<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> ยกเลิก</a>
-                            <?php include('orderaction.php'); ?>
+                            <?php if ($status != 2) { ?>
+                                <a href="#cancle<?php echo $row['Order_id']; ?>" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> ยกเลิก</a>
+                            <?php }
+                            include('orderaction.php'); ?>
                         </td>
                         </tr>
                     <?php
