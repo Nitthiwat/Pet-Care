@@ -37,19 +37,19 @@
             if (isset($_GET['q']) && $_GET['q'] != '') {
 
                 //ประกาศตัวแปรรับค่าจากฟอร์ม
-                $q = "{$_GET['q']}";
+                $q = "%{$_GET['q']}%";
 
                 //คิวรี่ข้อมูลมาแสดงจากการค้นหา
-                $stmt = $conn->prepare("select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) order by Order_date DESC where Order_id = ?");
+                $stmt = $conn->prepare("select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) where Product_name LIKE ? order by Order_date DESC");
                 $stmt->execute([$q]);
                 $stmt->execute();
                 $result = $stmt->fetchAll();
-            }else{
+            } else {
                 //    คิวรี่ข้อมูลมาแสดงตามปกติ *แสดงทั้งหมด
-                  $stmt = $conn->prepare("select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) order by Order_date DESC");
-                  $stmt->execute();
-                  $result = $stmt->fetchAll();
-                }
+                $stmt = $conn->prepare("select * from order_detail join order_head on(order_detail.Order_id = order_head.Order_id) join product on(order_detail.Product_id = product.Product_id) order by Order_date DESC");
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+            }
             ?>
             <!-- <span class="pull-left"><a href="#addnew" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New</a></span> -->
             <!-- <a href="add.php">Add product</a> -->
